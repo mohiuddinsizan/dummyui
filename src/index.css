@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Mobile app feel */
+html, body {
+  height: 100%;
+}
+
+/* Smooth text + prevent weird drag */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: nicer scrollbar on desktop */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 999px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
