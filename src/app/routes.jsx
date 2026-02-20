@@ -6,11 +6,13 @@ import SubjectDetail from "../pages/SubjectDetail.jsx";
 import ChapterDetail from "../pages/ChapterDetail.jsx";
 import TestSetup from "../pages/TestSetup.jsx";
 import TestRunner from "../pages/TestRunner.jsx";
+import Subscription from "../pages/Subscription.jsx";
 
 export const appRoutes = [
   { path: "/home", element: <Home /> },
   { path: "/dashboard", element: <Dashboard /> },
   { path: "/my-courses", element: <MyCourses /> },
+  { path: "/subscription", element: <Subscription /> },
 
   { path: "/my-courses/:courseId", element: <CourseDetail /> },
   { path: "/my-courses/:courseId/subjects/:subjectId", element: <SubjectDetail /> },

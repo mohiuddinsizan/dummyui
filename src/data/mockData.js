@@ -101,6 +101,20 @@ export const myCourses = [
   },
 ];
 
+export const subscriptionYears = ["2024", "2025", "2026"];
+
+export const presetBundles = [
+  {
+    id: "b1",
+    name: "HSC Science Starter",
+    courseIds: ["c1", "c2"],
+  },
+  {
+    id: "b2",
+    name: "HSC Full Combo",
+    courseIds: ["c1", "c2", "c3"],
+  },
+];
 
 export const dashboardDailyMarks = [
   { day: "Mon", marks: 42 },
