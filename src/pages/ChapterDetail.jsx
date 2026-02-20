@@ -130,7 +130,7 @@ export default function ChapterDetail() {
           </div>
 
           {/* Selects — no pb-6, proper gap */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 pb-3">
             <Select label="Board" value={board} onChange={(e) => setBoard(e.target.value)}>
               {boardAnalytics.boards.map((b) => (
                 <option key={b} value={b}>{b}</option>
