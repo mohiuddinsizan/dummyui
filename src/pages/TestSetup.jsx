@@ -117,7 +117,7 @@ export default function TestSetup() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
               <div className="text-[11px] text-white/60 font-bold">
-                Questions
+                qstn
               </div>
               <div className="text-white font-extrabold mt-1">
                 {Number(count) || 0}
