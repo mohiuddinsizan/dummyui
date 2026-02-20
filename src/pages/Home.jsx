@@ -16,8 +16,8 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col items-end gap-2">
-            <Badge>Mobile UI</Badge>
-            <Badge>Frontend only</Badge>
+            {/* <Badge>Mobile UI</Badge> */}
+            {/* <Badge>Frontend only</Badge> */}
           </div>
         </div>
       </Card>

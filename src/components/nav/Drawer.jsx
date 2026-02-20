@@ -55,7 +55,7 @@ export default function Drawer({ open, onClose }) {
         <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 p-4">
           <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-rose-600/18 via-red-500/12 to-orange-500/8 p-4">
             <div className="text-sm font-extrabold">The Royal Scientific Publications</div>
-            <div className="mt-1 text-xs text-white/60">Premium red 3D theme</div>
+            {/* <div className="mt-1 text-xs text-white/60">Premium red 3D theme</div> */}
           </div>
         </div>
       </aside>

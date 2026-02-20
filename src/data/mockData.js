@@ -14,7 +14,7 @@ export const homeCourses = [
     validity: "90 days",
     desc: "Concept + CQ + MCQ + Board analysis",
     image:
-      "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=900&q=70",
+      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
   },
   {
     id: "c2",
@@ -23,7 +23,7 @@ export const homeCourses = [
     validity: "60 days",
     desc: "Organic + Inorganic + practice tests",
     image:
-      "https://images.unsplash.com/photo-1559757175-5700dde67548?auto=format&fit=crop&w=900&q=70",
+      "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
   },
   {
     id: "c3",
@@ -43,7 +43,7 @@ export const tutorialVideos = [
     duration: "3:45",
     channel: "Royal Scientific",
     thumb:
-      "https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?auto=format&fit=crop&w=1200&q=70",
+      "https://s3-figma-hubfile-images-production.figma.com/hub/file/carousel/img/dee096b0d5ecfd035e4d25da560d1d28fd47687c",
   },
   {
     id: "v2",
@@ -51,7 +51,7 @@ export const tutorialVideos = [
     duration: "5:10",
     channel: "Royal Scientific",
     thumb:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=70",
+      "https://i.ytimg.com/vi/Nii_fBGb0_c/maxresdefault.jpg",
   },
 ];
 
@@ -62,7 +62,7 @@ export const myCourses = [
     title: "HSC Physics Full Course",
     subtitle: "Board-focused practice",
     thumb:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=70",
+      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
     subjects: [
       {
         id: "sub-1",
@@ -87,7 +87,7 @@ export const myCourses = [
     title: "HSC Chemistry Full Course",
     subtitle: "CQ/MCQ + formula bank",
     thumb:
-      "https://images.unsplash.com/photo-1559757175-5700dde67548?auto=format&fit=crop&w=1200&q=70",
+      "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
     subjects: [
       {
         id: "sub-3",
@@ -135,23 +135,79 @@ export const boardAnalytics = {
 };
 
 export const relevantInfoRows = [
-  { name: "Definition", desc: "Short concept explanation related to this chapter." },
-  { name: "Key Point", desc: "Important points to remember for boards." },
-  { name: "Common Mistake", desc: "Typical errors students make in this topic." },
+  { name: "সংজ্ঞা", desc: "এই অধ্যায়ের মূল ধারণা/কনসেপ্ট সংক্ষেপে ব্যাখ্যা।" },
+  { name: "গুরুত্বপূর্ণ পয়েন্ট", desc: "বোর্ড পরীক্ষায় বারবার আসে—মনে রাখার মতো পয়েন্ট।" },
+  { name: "সাধারণ ভুল", desc: "এই টপিকে শিক্ষার্থীরা যে ভুলগুলো বেশি করে—সতর্কতা।" },
 ];
 
 export const formulaRows = [
-  { name: "v = u + at", desc: "u: initial velocity, a: acceleration, t: time" },
-  { name: "s = ut + 1/2 at²", desc: "s: displacement, u: initial velocity, a: acceleration, t: time" },
+  { name: "v = u + at", desc: "u: প্রাথমিক বেগ, a: ত্বরণ, t: সময়" },
+  { name: "s = ut + ½at²", desc: "s: সরণ, u: প্রাথমিক বেগ, a: ত্বরণ, t: সময়" },
+  { name: "F = ma", desc: "F: বল, m: ভর, a: ত্বরণ" },
 ];
 
+/**
+ * CQ = 1 stem + 4 serial questions (ক, খ, গ, ঘ)
+ * Keep q as stem, and parts[] as the 4 sub-questions.
+ */
 export const sampleCQ = [
-  { id: "cq1", q: "Explain Newton’s 1st law with an example.", a: "It states... Example: ..." , tag: "Basics" },
-  { id: "cq2", q: "Derive the equation of motion s = ut + 1/2 at².", a: "Derivation: ..." , tag: "Derivation" },
+  {
+    id: "cq1",
+    tag: "গতি/সমত্বরণ",
+    q: "একটি বস্তু স্থির অবস্থা থেকে সমত্বরণে চলতে শুরু করল। ৪ সেকেন্ড পরে এর বেগ ৮ মি/সে হলো।",
+    parts: [
+      { key: "ক", q: "সমত্বরণ কাকে বলে?" },
+      { key: "খ", q: "v = u + at সমীকরণটি কীভাবে প্রযোজ্য—ব্যাখ্যা কর।" },
+      { key: "গ", q: "বস্তুর ত্বরণ নির্ণয় কর।" },
+      { key: "ঘ", q: "উক্ত ত্বরণে ৪ সেকেন্ডে বস্তুটির সরণ কত হবে? গণনা কর।" },
+    ],
+    a:
+      "ক) সমত্বরণ: সমান সময় অন্তরে বেগের পরিবর্তন সমান হলে তাকে সমত্বরণ বলে।\n\n" +
+      "খ) এখানে u=0 (স্থির থেকে শুরু), v=8, t=4 ⇒ v=u+at প্রযোজ্য।\n\n" +
+      "গ) v=u+at ⇒ 8=0+a×4 ⇒ a=2 মি/সে²\n\n" +
+      "ঘ) s=ut+½at² ⇒ s=0×4+½×2×(4²)=16 মিটার",
+  },
+  {
+    id: "cq2",
+    tag: "নিউটনের সূত্র",
+    q: "একটি বাস হঠাৎ ব্রেক করলে যাত্রীরা সামনের দিকে ঝুঁকে পড়ে।",
+    parts: [
+      { key: "ক", q: "জড়তা (Inertia) কাকে বলে?" },
+      { key: "খ", q: "উপরের ঘটনাটি নিউটনের কোন সূত্র/নীতির সাথে সম্পর্কিত—ব্যাখ্যা কর।" },
+      { key: "গ", q: "নিউটনের প্রথম গতিসূত্র লিখ।" },
+      { key: "ঘ", q: "আরেকটি দৈনন্দিন উদাহরণ দাও যেখানে জড়তার প্রভাব দেখা যায়।" },
+    ],
+    a:
+      "ক) জড়তা: বস্তু তার স্থির বা সমবেগে সরলরেখায় গতি অবস্থা বজায় রাখতে চায়—এ ধর্মকে জড়তা বলে।\n\n" +
+      "খ) বাস ব্রেক করলে বাস থামে, কিন্তু যাত্রীর শরীর আগের গতি অবস্থা বজায় রাখতে চায় ⇒ সামনের দিকে ঝুঁকে পড়ে (জড়তার কারণে)।\n\n" +
+      "গ) বাহ্যিক অসম বল না থাকলে বস্তু স্থির থাকবে বা সমবেগে সরলরেখায় চলবে।\n\n" +
+      "ঘ) বাস হঠাৎ চলতে শুরু করলে যাত্রী পিছনে হেলে পড়ে—এটিও জড়তার উদাহরণ।",
+  },
 ];
 
 export const sampleMCQ = [
-  { id: "m1", q: "Unit of acceleration is:", options: ["m/s", "m/s²", "kg", "N"], answer: 1, tag: "Units" },
-  { id: "m2", q: "If a=0, motion is:", options: ["uniform", "accelerated", "circular", "random"], answer: 0, tag: "Concept" },
-  { id: "m3", q: "F = ma is:", options: ["1st law", "2nd law", "3rd law", "Hooke’s law"], answer: 1, tag: "Basics" },
+  {
+    id: "m1",
+    tag: "একক",
+    q: "ত্বরণের একক কোনটি?",
+    options: ["m/s", "m/s²", "kg", "N"],
+    answer: 1,
+    explain: "ত্বরণ = বেগের পরিবর্তন / সময়, তাই একক (m/s) / s = m/s²।",
+  },
+  {
+    id: "m2",
+    tag: "ধারণা",
+    q: "যদি ত্বরণ a = 0 হয়, তবে গতি হবে—",
+    options: ["সমবেগ", "ত্বরণযুক্ত", "বৃত্তাকার", "এলোমেলো"],
+    answer: 0,
+    explain: "ত্বরণ শূন্য মানে বেগ পরিবর্তন হচ্ছে না—অর্থাৎ বস্তু সমবেগে চলবে।",
+  },
+  {
+    id: "m3",
+    tag: "সূত্র",
+    q: "F = ma সমীকরণটি কোন সূত্রের সাথে সম্পর্কিত?",
+    options: ["প্রথম গতিসূত্র", "দ্বিতীয় গতিসূত্র", "তৃতীয় গতিসূত্র", "হুকের সূত্র"],
+    answer: 1,
+    explain: "ত্বরণ = বেগের পরিবর্তন / সময়, তাই একক (m/s) / s = m/s²।",
+  },
 ];
