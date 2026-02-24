@@ -16,10 +16,11 @@ export const appRoutes = [
 
   { path: "/my-courses/:courseId", element: <CourseDetail /> },
   { path: "/my-courses/:courseId/subjects/:subjectId", element: <SubjectDetail /> },
-  {
-    path: "/my-courses/:courseId/subjects/:subjectId/chapters/:chapterId",
-    element: <ChapterDetail />,
-  },
+  // {
+  //   path: "/my-courses/:courseId/subjects/:subjectId/chapters/:chapterId",
+  //   element: <ChapterDetail />,
+  // },
+  { path:"/my-courses/:bookId/chapters/:chapterId", element : <ChapterDetail /> },
 
   // Test flow
 { path: "/test/setup", element: <TestSetup /> },

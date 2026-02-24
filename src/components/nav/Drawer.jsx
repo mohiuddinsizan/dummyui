@@ -41,7 +41,7 @@ export default function Drawer({ open, onClose }) {
         <div className="px-3 py-3">
           <DrawerLink to="/home" icon={<Home className="h-5 w-5" />} label="Home" onClick={onClose} />
           <DrawerLink to="/dashboard" icon={<LayoutDashboard className="h-5 w-5" />} label="Dashboard" onClick={onClose} />
-          <DrawerLink to="/my-courses" icon={<BookOpen className="h-5 w-5" />} label="My Courses" onClick={onClose} />
+          <DrawerLink to="/my-courses" icon={<BookOpen className="h-5 w-5" />} label="My Library" onClick={onClose} />
 
           <div className="my-3 border-t border-white/10" />
 
