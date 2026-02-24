@@ -561,13 +561,31 @@ export default function ChapterDetail() {
                     fontWeight: 1000,
                     boxShadow: active ? `0 8px 22px ${C.red}44` : `0 6px 18px #00000044`,
                     letterSpacing: "-0.2px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
+
+                    // ✅ NEW: keep same height + allow 2-line labels
+                    minHeight: 52,
+                    textAlign: "center",
                   }}
                 >
                   <span style={{ fontSize: 14, flexShrink: 0 }}>{t.icon}</span>
-                  <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis" }}>{t.label}</span>
+
+                  <span
+                    style={{
+                      minWidth: 0,
+                      lineHeight: 1.15,
+
+                      // ✅ 2-line clamp (works great on phones)
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      WebkitLineClamp: 2,
+                      overflow: "hidden",
+
+                      // fallback for non-webkit
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {t.label}
+                  </span>
                 </button>
               );
             })}
