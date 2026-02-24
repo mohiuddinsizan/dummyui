@@ -30,7 +30,7 @@ export const homeCourses = [
     price: 249,
     validity: "90 দিন",
     desc: "ভেক্টর, গতি, নিউটন, কাজ-শক্তি — কনসেপ্ট + উদাহরণ + CQ/MCQ",
-    image: "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+    image: "1.png",
     category: "hsc",
     subcategory: "understanding",
   },
@@ -40,7 +40,7 @@ export const homeCourses = [
     price: 299,
     validity: "120 দিন",
     desc: "বোর্ড ট্রেন্ড + গুরুত্বপূর্ণ পয়েন্ট + সাধারণ ভুল + শর্ট টেকনিক",
-    image: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    image: "2.png",
     category: "hsc",
     subcategory: "guide",
   },
@@ -50,7 +50,7 @@ export const homeCourses = [
     price: 199,
     validity: "60 দিন",
     desc: "শর্ট রিভিশন + নির্বাচিত MCQ/CQ + দ্রুত রুলস",
-    image: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    image: "3.png",
     category: "hsc",
     subcategory: "quick_preparation",
   },
@@ -60,7 +60,7 @@ export const homeCourses = [
     price: 179,
     validity: "60 দিন",
     desc: "পূর্ণাঙ্গ মডেল টেস্ট + সময় বণ্টন + ব্যাখ্যাসহ সমাধান",
-    image: "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+    image: "4.png",
     category: "hsc",
     subcategory: "test_paper",
   },
@@ -71,7 +71,7 @@ export const homeCourses = [
     price: 239,
     validity: "90 দিন",
     desc: "পর্যায় সারণি, রাসায়নিক বন্ধন, স্টইকিওমেট্রি — কনসেপ্ট + CQ/MCQ",
-    image: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    image: "4.png",
     category: "hsc",
     subcategory: "understanding",
   },
@@ -81,7 +81,7 @@ export const homeCourses = [
     price: 289,
     validity: "120 দিন",
     desc: "সাজেশন, গুরুত্বপূর্ণ সূত্র, বোর্ড প্রশ্ন বিশ্লেষণ",
-    image: "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
+    image: "5.png",
     category: "hsc",
     subcategory: "guide",
   },
@@ -91,7 +91,7 @@ export const homeCourses = [
     price: 199,
     validity: "60 দিন",
     desc: "রিঅ্যাকশন চার্ট + শর্ট নোট + গুরুত্বপূর্ণ MCQ",
-    image: "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
+    image: "6.png",
     category: "hsc",
     subcategory: "quick_preparation",
   },
@@ -101,7 +101,7 @@ export const homeCourses = [
     price: 179,
     validity: "60 দিন",
     desc: "মডেল টেস্ট + টপিকভিত্তিক প্রশ্ন + সমাধান",
-    image: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    image: "6.png",
     category: "hsc",
     subcategory: "test_paper",
   },
@@ -112,8 +112,7 @@ export const homeCourses = [
     price: 259,
     validity: "90 দিন",
     desc: "ফাংশন, সীমা, ডিফারেনশিয়েশন — কনসেপ্ট + উদাহরণ + CQ",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
-    category: "hsc",
+    image: "7.png", category: "hsc",
     subcategory: "understanding",
   },
   {
@@ -122,7 +121,7 @@ export const homeCourses = [
     price: 299,
     validity: "120 দিন",
     desc: "শর্ট টেকনিক + কমন প্রশ্ন + ভুল ধরার কৌশল",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "8.png",
     category: "hsc",
     subcategory: "guide",
   },
@@ -132,7 +131,7 @@ export const homeCourses = [
     price: 199,
     validity: "60 দিন",
     desc: "ফর্মুলা ভল্ট + ৫০টি কমন সমস্যা + দ্রুত রিভিশন",
-    image: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?auto=format&fit=crop&w=900&q=70",
+    image: "9.png",
     category: "hsc",
     subcategory: "quick_preparation",
   },
@@ -142,7 +141,7 @@ export const homeCourses = [
     price: 179,
     validity: "60 দিন",
     desc: "পূর্ণাঙ্গ মক + উত্তরসহ সমাধান",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "10.png",
     category: "hsc",
     subcategory: "test_paper",
   },
@@ -154,7 +153,7 @@ export const homeCourses = [
     price: 179,
     validity: "90 দিন",
     desc: "গতি, বল, কাজ-শক্তি — কনসেপ্ট + CQ/MCQ",
-    image: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    image: "11.png",
     category: "ssc",
     subcategory: "understanding",
   },
@@ -164,7 +163,7 @@ export const homeCourses = [
     price: 199,
     validity: "120 দিন",
     desc: "সাজেশন, গুরুত্বপূর্ণ পয়েন্ট, বোর্ড ফোকাস",
-    image: "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+    image: "12.png",
     category: "ssc",
     subcategory: "guide",
   },
@@ -174,7 +173,7 @@ export const homeCourses = [
     price: 149,
     validity: "60 দিন",
     desc: "দ্রুত রিভিশন + গুরুত্বপূর্ণ প্রশ্ন",
-    image: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    image: "13.png",
     category: "ssc",
     subcategory: "quick_preparation",
   },
@@ -278,7 +277,7 @@ export const homeCourses = [
     price: 349,
     validity: "120 দিন",
     desc: "ইউনিট/গুচ্ছ ভর্তি: ম্যাথ বেসিক থেকে অ্যাডভান্স",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "1.png",
     category: "admission",
     subcategory: "understanding",
   },
@@ -288,7 +287,7 @@ export const homeCourses = [
     price: 329,
     validity: "120 দিন",
     desc: "ফিজিক্স/কেমিস্ট্রি বেসিক + দ্রুত কনসেপ্ট",
-    image: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    image: "11.png",
     category: "admission",
     subcategory: "understanding",
   },
@@ -298,8 +297,7 @@ export const homeCourses = [
     price: 299,
     validity: "60 দিন",
     desc: "শর্ট নোট + কমন MCQ + টাইম ট্রিক",
-    image: "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
-    category: "admission",
+    image: "8.png", category: "admission",
     subcategory: "quick_preparation",
   },
   {
@@ -308,7 +306,7 @@ export const homeCourses = [
     price: 279,
     validity: "90 দিন",
     desc: "প্ল্যানিং, সিলেবাস ব্রেকডাউন, কমন ভুল",
-    image: "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
+    image: "7.png",
     category: "admission",
     subcategory: "guide",
   },
@@ -318,7 +316,7 @@ export const homeCourses = [
     price: 299,
     validity: "90 দিন",
     desc: "পূর্ণাঙ্গ মক + বিশ্লেষণ + সমাধান",
-    image: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    image: "5.png",
     category: "admission",
     subcategory: "test_paper",
   },
@@ -330,15 +328,16 @@ export const tutorialVideos = [
     title: "How to use the app (Full tutorial)",
     duration: "3:45",
     channel: "Royal Scientific",
-    thumb:
-      "https://www.seoclerk.com/pics/000/951/134/f889272345a569d40799d29dca61d254.png",
+    thumb: "https://the-royal-scientific-publications.com/uploads/sliders/2024/01/24/Slider1706084072.webp",
+    
   },
   {
     id: "v2",
     title: "How to take tests & see results",
     duration: "5:10",
     channel: "Royal Scientific",
-    thumb: "https://i.ytimg.com/vi/Nii_fBGb0_c/maxresdefault.jpg",
+    thumb:
+      "https://the-royal-scientific-publications.com/uploads/category/2023/08/07/PEC_Exercise1691379436.jpg",
   },
 ];
 
@@ -355,105 +354,294 @@ export const tutorialVideos = [
 // - Book -> chapters
 // No subjects nesting, no chapters inside chapters.
 
+// =========================
+// ✅ REALISTIC (BD) MY LIBRARY
+// =========================
+
 export const myBooks = [
+  // -------------------- HSC --------------------
   {
-    id: "b101",
-    title: "HSC পদার্থবিজ্ঞান ১ম পত্র",
-    subtitle: "কুইক প্রিপারেশন + টেস্ট পেপার",
-    thumb: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
-
-    // ✅ Book -> chapters (flat)
+    id: "bk-hsc-phy-1st",
+    title: "এইচএসসি পদার্থবিজ্ঞান — ১ম পত্র",
+    subtitle: "কনসেপ্ট + বোর্ড ফোকাস",
+    thumb:
+      "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
     chapters: [
-      { id: "b101-ch1", title: "ভেক্টর: যোগ-বিয়োগ", duration: "12 min" },
-      { id: "b101-ch2", title: "ডট ও ক্রস প্রোডাক্ট", duration: "15 min" },
-      { id: "b101-ch3", title: "নিউটনের সূত্র", duration: "18 min" },
-      { id: "b101-ch4", title: "ঘর্ষণ ও কাজ", duration: "14 min" },
+      { id: "hsc-phy1-ch1", title: "ভৌতজগৎ ও পরিমাপ", duration: "18 min" },
+      { id: "hsc-phy1-ch2", title: "ভেক্টর", duration: "22 min" },
+      { id: "hsc-phy1-ch3", title: "গতিবিদ্যা", duration: "25 min" },
+      { id: "hsc-phy1-ch4", title: "নিউটনিয়ান বলবিদ্যা", duration: "28 min" },
+      { id: "hsc-phy1-ch5", title: "কাজ, শক্তি ও ক্ষমতা", duration: "24 min" },
+      { id: "hsc-phy1-ch6", title: "মহাকর্ষ ও অভিকর্ষ", duration: "26 min" },
+      { id: "hsc-phy1-ch7", title: "পদার্থের গাঠনিক ধর্ম", duration: "20 min" },
+      { id: "hsc-phy1-ch8", title: "পর্যাবৃত্ত গতি", duration: "23 min" },
+      { id: "hsc-phy1-ch9", title: "তরঙ্গ", duration: "24 min" },
+      { id: "hsc-phy1-ch10", title: "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব", duration: "21 min" },
     ],
   },
 
   {
-    id: "b102",
-    title: "HSC উচ্চতর গণিত",
-    subtitle: "আন্ডারস্ট্যান্ডিং সিরিজ",
-    thumb: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
-
+    id: "bk-hsc-phy-2nd",
+    title: "এইচএসসি পদার্থবিজ্ঞান — ২য় পত্র",
+    subtitle: "তড়িৎ + চৌম্বকত্ব + আলোকবিজ্ঞান",
+    thumb:
+      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
     chapters: [
-      { id: "b102-ch1", title: "Limit Concept", duration: "16 min" },
-      { id: "b102-ch2", title: "Differentiation Rules", duration: "20 min" },
-      { id: "b102-ch3", title: "Practice Set (Board Focus)", duration: "25 min" },
+      { id: "hsc-phy2-ch1", title: "তাপগতিবিদ্যা", duration: "24 min" },
+      { id: "hsc-phy2-ch2", title: "স্থির তড়িৎ", duration: "26 min" },
+      { id: "hsc-phy2-ch3", title: "চল তড়িৎ", duration: "25 min" },
+      { id: "hsc-phy2-ch4", title: "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া", duration: "22 min" },
+      { id: "hsc-phy2-ch5", title: "তড়িতচৌম্বকীয় আবেশ", duration: "24 min" },
+      { id: "hsc-phy2-ch6", title: "জ্যামিতিক আলোকবিজ্ঞান", duration: "21 min" },
+      { id: "hsc-phy2-ch7", title: "ভৌত আলোকবিজ্ঞান", duration: "23 min" },
+      { id: "hsc-phy2-ch8", title: "আধুনিক পদার্থবিজ্ঞানের সূচনা", duration: "20 min" },
+      { id: "hsc-phy2-ch9", title: "পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান", duration: "22 min" },
     ],
   },
 
   {
-    id: "b103",
-    title: "SSC রসায়ন গাইড",
-    subtitle: "বোর্ড ভিত্তিক প্রস্তুতি",
-    thumb: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
-
+    id: "bk-hsc-chem-1st",
+    title: "এইচএসসি রসায়ন — ১ম পত্র",
+    subtitle: "গুণগত + পর্যায়বৃত্ত ধর্ম + পরিবর্তন",
+    thumb:
+      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    // (অনলাইনে প্রচলিত লিস্টিং অনুযায়ী) :contentReference[oaicite:1]{index=1}
     chapters: [
-      { id: "b103-ch1", title: "পর্যায় সারণি: ধাতু ও অধাতু", duration: "10 min" },
-      { id: "b103-ch2", title: "রাসায়নিক বন্ধন", duration: "14 min" },
-      { id: "b103-ch3", title: "রাসায়নিক বিক্রিয়া", duration: "12 min" },
+      { id: "hsc-chem1-ch2", title: "গুণগত রসায়ন", duration: "26 min" },
+      { id: "hsc-chem1-ch3", title: "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন", duration: "28 min" },
+      { id: "hsc-chem1-ch4", title: "রাসায়নিক পরিবর্তন", duration: "24 min" },
+      { id: "hsc-chem1-ch5", title: "কর্মমুখী রসায়ন", duration: "20 min" },
+    ],
+  },
+
+  {
+    id: "bk-hsc-chem-2nd",
+    title: "এইচএসসি রসায়ন — ২য় পত্র",
+    subtitle: "পরিবেশ + জৈব + তড়িৎ রসায়ন",
+    thumb:
+      "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
+    chapters: [
+      { id: "hsc-chem2-ch1", title: "পরিবেশ রসায়ন", duration: "20 min" },
+      { id: "hsc-chem2-ch2", title: "জৈব রসায়ন", duration: "28 min" },
+      { id: "hsc-chem2-ch3", title: "পরিমাণগত রসায়ন", duration: "26 min" },
+      { id: "hsc-chem2-ch4", title: "তড়িৎ রসায়ন", duration: "24 min" },
+      { id: "hsc-chem2-ch5", title: "অর্থনৈতিক রসায়ন", duration: "18 min" },
+    ],
+  },
+
+  // -------------------- SSC --------------------
+  {
+    id: "bk-ssc-phy",
+    title: "এসএসসি পদার্থবিজ্ঞান",
+    subtitle: "নবম-দশম — বোর্ড ভিত্তিক",
+    thumb:
+      "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+    chapters: [
+      { id: "ssc-phy-ch1", title: "ভৌত রাশি ও পরিমাপ", duration: "16 min" },
+      { id: "ssc-phy-ch2", title: "গতি", duration: "18 min" },
+      { id: "ssc-phy-ch3", title: "বল", duration: "20 min" },
+      { id: "ssc-phy-ch4", title: "কাজ-শক্তি-ক্ষমতা", duration: "18 min" },
+      { id: "ssc-phy-ch5", title: "পদার্থের অবস্থা ও চাপ", duration: "17 min" },
+      { id: "ssc-phy-ch6", title: "বস্তুর উপর তাপের প্রভাব", duration: "20 min" },
+      { id: "ssc-phy-ch7", title: "তরঙ্গ ও শব্দ", duration: "20 min" },
+      { id: "ssc-phy-ch8", title: "আলোর প্রতিফলন", duration: "18 min" },
+      { id: "ssc-phy-ch9", title: "আলোর প্রতিসরণ", duration: "19 min" },
+      { id: "ssc-phy-ch10", title: "চোখ ও আলোকীয় যন্ত্র", duration: "18 min" },
+      { id: "ssc-phy-ch11", title: "চল বিদ্যুৎ", duration: "20 min" },
+      { id: "ssc-phy-ch12", title: "বিদ্যুতের চৌম্বক ক্রিয়া", duration: "18 min" },
+      { id: "ssc-phy-ch13", title: "তেজস্ক্রিয়তা ও ইলেকট্রনিকস", duration: "19 min" },
+    ],
+  },
+
+  {
+    id: "bk-ssc-chem",
+    title: "এসএসসি রসায়ন",
+    subtitle: "নবম-দশম — কনসেপ্ট + অনুশীলনী",
+    thumb:
+      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    chapters: [
+      { id: "ssc-chem-ch1", title: "রসায়নের ধারণা", duration: "16 min" },
+      { id: "ssc-chem-ch2", title: "পদার্থের অবস্থা", duration: "18 min" },
+      { id: "ssc-chem-ch3", title: "পদার্থের গঠন", duration: "18 min" },
+      { id: "ssc-chem-ch4", title: "পর্যায় সারণি", duration: "20 min" },
+      { id: "ssc-chem-ch5", title: "রাসায়নিক বন্ধন", duration: "22 min" },
+      { id: "ssc-chem-ch6", title: "রাসায়নিক গণনা (মোল/ঘনমাত্রা)", duration: "22 min" },
+      { id: "ssc-chem-ch7", title: "রাসায়নিক বিক্রিয়া", duration: "24 min" },
+    ],
+  },
+
+  // -------------------- ADMISSION (Varsity) --------------------
+  {
+    id: "bk-adm-varsity-phy",
+    title: "ভার্সিটি ভর্তি পদার্থবিজ্ঞান (MCQ + CQ)",
+    subtitle: "ফিজিক্স বেসিক → এডভান্স (ইউনিট টার্গেট)",
+    thumb:
+      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+    chapters: [
+      { id: "adm-phy-ch1", title: "ভেক্টর + কাইনেমেটিক্স রিভিশন", duration: "22 min" },
+      { id: "adm-phy-ch2", title: "নিউটন + ঘর্ষণ (Problem Solving)", duration: "25 min" },
+      { id: "adm-phy-ch3", title: "কাজ-শক্তি + মহাকর্ষ", duration: "22 min" },
+      { id: "adm-phy-ch4", title: "তড়িৎ (Electrostatics) শর্ট ট্রিক", duration: "24 min" },
+      { id: "adm-phy-ch5", title: "চল তড়িৎ + সার্কিট", duration: "23 min" },
+    ],
+  },
+
+  {
+    id: "bk-adm-varsity-chem",
+    title: "ভার্সিটি ভর্তি রসায়ন (MCQ স্পেশাল)",
+    subtitle: "জৈব + অজৈব + গণনা",
+    thumb:
+      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    chapters: [
+      { id: "adm-chem-ch1", title: "পর্যায় সারণি + রাসায়নিক বন্ধন (Fast Recap)", duration: "22 min" },
+      { id: "adm-chem-ch2", title: "মোল/ঘনমাত্রা/স্টইকিওমেট্রি", duration: "26 min" },
+      { id: "adm-chem-ch3", title: "জৈব রসায়ন বেসিক + রিঅ্যাকশন ম্যাপ", duration: "28 min" },
+      { id: "adm-chem-ch4", title: "ইলেক্ট্রোকেমিস্ট্রি (Short Technique)", duration: "22 min" },
     ],
   },
 ];
+
 
 export const myBundles = [
   {
-    id: "bd201",
-    title: "HSC বিজ্ঞান ফুল বান্ডেল",
-    subtitle: "ফিজিক্স + ম্যাথ (কম্বাইন্ড)",
-    thumb: "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
-
-    // ✅ Bundle -> books (each book has chapters)
+    id: "bd-hsc-quick-prep",
+    title: "HSC Quick Preparation Series",
+    subtitle: "Physics + Chemistry (১ম/২য় পত্র) কম্বো",
+    thumb:
+      "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
     books: [
-      {
-        id: "b101",
-        title: "HSC পদার্থবিজ্ঞান ১ম পত্র",
-        thumb: "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
-        chapters: [
-          { id: "b101-ch1", title: "ভেক্টর: যোগ-বিয়োগ", duration: "12 min" },
-          { id: "b101-ch2", title: "ডট ও ক্রস প্রোডাক্ট", duration: "15 min" },
-          { id: "b101-ch3", title: "নিউটনের সূত্র", duration: "18 min" },
-          { id: "b101-ch4", title: "ঘর্ষণ ও কাজ", duration: "14 min" },
-        ],
-      },
-      {
-        id: "b102",
-        title: "HSC উচ্চতর গণিত",
-        thumb: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
-        chapters: [
-          { id: "b102-ch1", title: "Limit Concept", duration: "16 min" },
-          { id: "b102-ch2", title: "Differentiation Rules", duration: "20 min" },
-          { id: "b102-ch3", title: "Practice Set (Board Focus)", duration: "25 min" },
-        ],
-      },
+      { id: "bk-hsc-phy-1st", title: "এইচএসসি পদার্থবিজ্ঞান — ১ম পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-phy-1st")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-phy-1st")?.chapters || [] },
+      { id: "bk-hsc-phy-2nd", title: "এইচএসসি পদার্থবিজ্ঞান — ২য় পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-phy-2nd")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-phy-2nd")?.chapters || [] },
+      { id: "bk-hsc-chem-1st", title: "এইচএসসি রসায়ন — ১ম পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-chem-1st")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-chem-1st")?.chapters || [] },
+      { id: "bk-hsc-chem-2nd", title: "এইচএসসি রসায়ন — ২য় পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-chem-2nd")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-chem-2nd")?.chapters || [] },
     ],
   },
 
   {
-    id: "bd202",
-    title: "SSC রিভিশন বান্ডেল",
-    subtitle: "দ্রুত প্রস্তুতি + গাইড",
-    thumb: "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
-
+    id: "bd-varsity-admission",
+    title: "Varsity Admission Series",
+    subtitle: "Physics + Chemistry (Unit Target)",
+    thumb:
+      "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
     books: [
-      {
-        id: "b103",
-        title: "SSC রসায়ন গাইড",
-        thumb: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
-        chapters: [
-          { id: "b103-ch1", title: "পর্যায় সারণি: ধাতু ও অধাতু", duration: "10 min" },
-          { id: "b103-ch2", title: "রাসায়নিক বন্ধন", duration: "14 min" },
-          { id: "b103-ch3", title: "রাসায়নিক বিক্রিয়া", duration: "12 min" },
-        ],
-      },
+      { id: "bk-adm-varsity-phy", title: "ভার্সিটি ভর্তি পদার্থবিজ্ঞান (MCQ + CQ)", thumb: myBooks.find(b => b.id === "bk-adm-varsity-phy")?.thumb, chapters: myBooks.find(b => b.id === "bk-adm-varsity-phy")?.chapters || [] },
+      { id: "bk-adm-varsity-chem", title: "ভার্সিটি ভর্তি রসায়ন (MCQ স্পেশাল)", thumb: myBooks.find(b => b.id === "bk-adm-varsity-chem")?.thumb, chapters: myBooks.find(b => b.id === "bk-adm-varsity-chem")?.chapters || [] },
     ],
   },
 ];
 
-// ✅ Backward compatibility so old pages don't crash:
-export const myCourses = myBooks;
+
+// =========================
+// ✅ REALISTIC CQ (10 marks: 1+2+3+4)
+// =========================
+
+export const sampleCQ = [
+  // -------- HSC Physics (Kinematics) --------
+  {
+    id: "cq-hsc-phy-kin-01",
+    tag: "HSC | গতিবিদ্যা",
+    q:
+      "একটি গাড়ি স্থির অবস্থা থেকে সমত্বরণে চলতে শুরু করল। ৫ সেকেন্ডে গাড়িটির বেগ ২০ মি/সে হলো।",
+    parts: [
+      { key: "ক", q: "সমত্বরণ কাকে বলে? (১)" },
+      { key: "খ", q: "v = u + at সমীকরণটি প্রমাণ/ব্যাখ্যা কর। (২)" },
+      { key: "গ", q: "গাড়িটির ত্বরণ নির্ণয় কর। (৩)" },
+      { key: "ঘ", q: "উক্ত সময়ে গাড়িটির অতিক্রান্ত দূরত্ব নির্ণয় কর। (৪)" },
+    ],
+    a:
+      "ক (১): সমান সমান সময় অন্তরে বেগের পরিবর্তন সমান হলে সেই ত্বরণকে সমত্বরণ বলে।\n\n" +
+      "খ (২): ত্বরণ a = (v − u)/t ⇒ v = u + at. এখানে u প্রাথমিক বেগ, v চূড়ান্ত বেগ, t সময়। সমত্বরণে বেগ সময়ের সাথে সরলরেখায় বাড়ে, তাই সম্পর্কটি প্রযোজ্য।\n\n" +
+      "গ (৩): দেওয়া আছে u=0, v=20 m/s, t=5 s\n" +
+      "v = u + at ⇒ 20 = 0 + a×5 ⇒ a = 4 m/s².\n" +
+      "সুতরাং ত্বরণ = ৪ মি/সে²।\n\n" +
+      "ঘ (৪): দূরত্ব s = ut + ½at²\n" +
+      "⇒ s = 0×5 + ½×4×(5²)\n" +
+      "⇒ s = 2×25 = 50 m.\n" +
+      "অতএব গাড়িটি ৫০ মিটার পথ অতিক্রম করেছে।",
+  },
+
+  // -------- HSC Physics (Electricity) --------
+  {
+    id: "cq-hsc-phy-elec-01",
+    tag: "HSC | স্থির তড়িৎ",
+    q:
+      "একটি বিন্দু চার্জ Q থেকে r দূরত্বে তড়িৎ ক্ষেত্রের মান E পাওয়া যায়। r দ্বিগুণ করলে ক্ষেত্র কীভাবে পরিবর্তিত হয়?",
+    parts: [
+      { key: "ক", q: "তড়িৎ ক্ষেত্রের তীব্রতা (Electric Field Intensity) কী? (১)" },
+      { key: "খ", q: "কুলম্বের সূত্র লিখে ব্যাখ্যা কর। (২)" },
+      { key: "গ", q: "E = kQ/r² সম্পর্কটি দেখাও। (৩)" },
+      { key: "ঘ", q: "r দ্বিগুণ হলে E কত গুণ হবে? যুক্তিসহ। (৪)" },
+    ],
+    a:
+      "ক (১): কোনো বিন্দুতে একক ধনাত্মক পরীক্ষণ চার্জের উপর ক্রিয় বলের মানকে ঐ বিন্দুর তড়িৎ ক্ষেত্রের তীব্রতা বলে। অর্থাৎ E = F/q₀.\n\n" +
+      "খ (২): কুলম্বের সূত্র অনুযায়ী, দুটি বিন্দু চার্জ Q ও q এর মধ্যে বল F ∝ Qq এবং F ∝ 1/r²; সুতরাং F = k(Qq)/r², যেখানে k মাধ্যমনির্ভর ধ্রুবক।\n\n" +
+      "গ (৩): পরীক্ষণ চার্জ q₀ বসালে বল F = k(Qq₀)/r².\n" +
+      "তড়িৎ ক্ষেত্র E = F/q₀ ⇒ E = [k(Qq₀)/r²] / q₀ = kQ/r².\n\n" +
+      "ঘ (৪): r → 2r হলে, E' = kQ/(2r)² = kQ/(4r²) = E/4.\n" +
+      "অতএব দূরত্ব দ্বিগুণ হলে তড়িৎ ক্ষেত্র ৪ গুণ কমে (এক-চতুর্থাংশ হয়)।",
+  },
+
+  // -------- HSC Chemistry (Qualitative + Bonding) --------
+  {
+    id: "cq-hsc-chem-qual-01",
+    tag: "HSC | গুণগত/বন্ধন",
+    q:
+      "একটি যৌগে পরমাণুগুলোর মধ্যে বন্ধন গঠিত হয় এবং যৌগটি পানিতে দ্রবীভূত হয়ে আয়ন দেয়।",
+    parts: [
+      { key: "ক", q: "আয়ন কাকে বলে? (১)" },
+      { key: "খ", q: "আয়নিক বন্ধন কীভাবে গঠিত হয়—ব্যাখ্যা কর। (২)" },
+      { key: "গ", q: "NaCl-এ কোন কণাগুলো আয়নে পরিণত হয় এবং কেন? (৩)" },
+      { key: "ঘ", q: "আয়নিক যৌগের গলনাঙ্ক/বিদ্যুৎ পরিবাহিতা বেশি হওয়ার কারণ লিখ। (৪)" },
+    ],
+    a:
+      "ক (১): ইলেকট্রন গ্রহণ বা ত্যাগ করে যে পরমাণু/অণু আধানযুক্ত কণায় পরিণত হয় তাকে আয়ন বলে।\n\n" +
+      "খ (২): ধাতু পরমাণু ইলেকট্রন ত্যাগ করে ধনায়ন হয় এবং অধাতু ইলেকট্রন গ্রহণ করে ঋণায়ন হয়। ধনায়ন-ঋণায়নের মধ্যে তড়িৎস্থির আকর্ষণে আয়নিক বন্ধন গঠিত হয়।\n\n" +
+      "গ (৩): Na একটি ইলেকট্রন ত্যাগ করে Na⁺ হয়, Cl একটি ইলেকট্রন গ্রহণ করে Cl⁻ হয়। কারণ Na-এর বহিঃস্ত স্তরে ১টি ইলেকট্রন (সহজে ত্যাগযোগ্য) এবং Cl-এর অক্টেট পূর্ণ করতে ১টি ইলেকট্রন দরকার।\n\n" +
+      "ঘ (৪): আয়নিক স্ফটিকে বিপরীত আধানযুক্ত আয়নের মধ্যে আকর্ষণ খুব শক্তিশালী (ল্যাটিস এনার্জি বেশি), তাই গলনাঙ্ক বেশি। কঠিন অবস্থায় আয়ন স্থির থাকায় পরিবাহিতা কম, কিন্তু গলিত/জলীয় দ্রবণে আয়ন চলনশীল হয় বলে বিদ্যুৎ ভালো পরিবাহিত হয়।",
+  },
+
+  // -------- SSC Physics (Force + Motion) --------
+  {
+    id: "cq-ssc-phy-01",
+    tag: "SSC | বল",
+    q:
+      "একটি ২ কেজি ভরের বস্তুর উপর ৬ নিউটন বল প্রয়োগ করা হলো।",
+    parts: [
+      { key: "ক", q: "বলের SI একক কী? (১)" },
+      { key: "খ", q: "নিউটনের দ্বিতীয় সূত্র লিখ। (২)" },
+      { key: "গ", q: "বস্তুর ত্বরণ নির্ণয় কর। (৩)" },
+      { key: "ঘ", q: "যদি একই ত্বরণে ৪ সেকেন্ড চলে এবং শুরুতে স্থির থাকে—সরণ কত? (৪)" },
+    ],
+    a:
+      "ক (১): বলের SI একক নিউটন (N)।\n\n" +
+      "খ (২): নিউটনের দ্বিতীয় সূত্র: বল = ভর × ত্বরণ ⇒ F = ma.\n\n" +
+      "গ (৩): F=6 N, m=2 kg ⇒ a = F/m = 6/2 = 3 m/s².\n\n" +
+      "ঘ (৪): u=0, a=3, t=4\n" +
+      "s = ut + ½at² = 0×4 + ½×3×(16) = 24 m.\n" +
+      "অতএব সরণ ২৪ মিটার।",
+  },
+
+  // -------- Admission (Varsity) Physics-style CQ (still 10 marks) --------
+  {
+    id: "cq-adm-phy-01",
+    tag: "Admission | সার্কিট",
+    q:
+      "একটি সার্কিটে ১২ V ব্যাটারির সাথে ৩Ω ও ৬Ω দুটি রোধ সিরিজে যুক্ত করা হলো।",
+    parts: [
+      { key: "ক", q: "রোধের একক কী? (১)" },
+      { key: "খ", q: "সিরিজ সংযোগে সমতুল্য রোধের সূত্র লিখ। (২)" },
+      { key: "গ", q: "সমতুল্য রোধ ও সার্কিটের তড়িৎধারা নির্ণয় কর। (৩)" },
+      { key: "ঘ", q: "৬Ω রোধে বিভবপতন কত হবে? ব্যাখ্যা সহ। (৪)" },
+    ],
+    a:
+      "ক (১): রোধের একক ওহম (Ω)।\n\n" +
+      "খ (২): সিরিজ সংযোগে R_eq = R1 + R2 + ...\n\n" +
+      "গ (৩): R_eq = 3 + 6 = 9 Ω\n" +
+      "I = V/R = 12/9 = 4/3 A ≈ 1.33 A.\n\n" +
+      "ঘ (৪): সিরিজে একই ধারা প্রবাহিত হয়। তাই ৬Ω রোধে বিভবপতন V6 = I×6 = (4/3)×6 = 8 V.\n" +
+      "অতএব ৬Ω রোধে বিভবপতন ৮ ভোল্ট।",
+  },
+];
 
 export const subscriptionYears = ["2024", "2025", "2026"];
 
@@ -549,41 +737,6 @@ export const formulaRows = [
   { name: "v = u + at", desc: "u: প্রাথমিক বেগ, a: ত্বরণ, t: সময়" },
   { name: "s = ut + ½at²", desc: "s: সরণ, u: প্রাথমিক বেগ, a: ত্বরণ, t: সময়" },
   { name: "F = ma", desc: "F: বল, m: ভর, a: ত্বরণ" },
-];
-
-export const sampleCQ = [
-  {
-    id: "cq1",
-    tag: "গতি/সমত্বরণ",
-    q: "একটি বস্তু স্থির অবস্থা থেকে সমত্বরণে চলতে শুরু করল। ৪ সেকেন্ড পরে এর বেগ ৮ মি/সে হলো।",
-    parts: [
-      { key: "ক", q: "সমত্বরণ কাকে বলে?" },
-      { key: "খ", q: "v = u + at সমীকরণটি কীভাবে প্রযোজ্য—ব্যাখ্যা কর।" },
-      { key: "গ", q: "বস্তুর ত্বরণ নির্ণয় কর।" },
-      { key: "ঘ", q: "উক্ত ত্বরণে ৪ সেকেন্ডে বস্তুটির সরণ কত হবে? গণনা কর।" },
-    ],
-    a:
-      "ক) সমত্বরণ: সমান সময় অন্তরে বেগের পরিবর্তন সমান হলে তাকে সমত্বরণ বলে।\n\n" +
-      "খ) এখানে u=0 (স্থির থেকে শুরু), v=8, t=4 ⇒ v=u+at প্রযোজ্য।\n\n" +
-      "গ) v=u+at ⇒ 8=0+a×4 ⇒ a=2 মি/সে²\n\n" +
-      "ঘ) s=ut+½at² ⇒ s=0×4+½×2×(4²)=16 মিটার",
-  },
-  {
-    id: "cq2",
-    tag: "নিউটনের সূত্র",
-    q: "একটি বাস হঠাৎ ব্রেক করলে যাত্রীরা সামনের দিকে ঝুঁকে পড়ে।",
-    parts: [
-      { key: "ক", q: "জড়তা (Inertia) কাকে বলে?" },
-      { key: "খ", q: "উপরের ঘটনাটি নিউটনের কোন সূত্র/নীতির সাথে সম্পর্কিত—ব্যাখ্যা কর।" },
-      { key: "গ", q: "নিউটনের প্রথম গতিসূত্র লিখ।" },
-      { key: "ঘ", q: "আরেকটি দৈনন্দিন উদাহরণ দাও যেখানে জড়তার প্রভাব দেখা যায়।" },
-    ],
-    a:
-      "ক) জড়তা: বস্তু তার স্থির বা সমবেগে সরলরেখায় গতি অবস্থা বজায় রাখতে চায়—এ ধর্মকে জড়তা বলে।\n\n" +
-      "খ) বাস ব্রেক করলে বাস থামে, কিন্তু যাত্রীর শরীর আগের গতি অবস্থা বজায় রাখতে চায় ⇒ সামনের দিকে ঝুঁকে পড়ে (জড়তার কারণে)।\n\n" +
-      "গ) বাহ্যিক অসম বল না থাকলে বস্তু স্থির থাকবে বা সমবেগে সরলরেখায় চলবে।\n\n" +
-      "ঘ) বাস হঠাৎ চলতে শুরু করলে যাত্রী পিছনে হেলে পড়ে—এটিও জড়তার উদাহরণ।",
-  },
 ];
 
 export const sampleMCQ = [

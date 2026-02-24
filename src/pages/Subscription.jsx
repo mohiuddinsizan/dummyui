@@ -15,16 +15,16 @@ function money(n) { return Number(n || 0).toLocaleString(); }
 const PAGE_SIZE = 5;
 
 const TABS = [
-  { value: "single", label: "একক", icon: "📖" },
-  { value: "bundle", label: "বান্ডেল", icon: "📦" },
-  { value: "preset", label: "প্রিসেট", icon: "⚡" },
+  { value: "single", label: "একক বই", icon: "📖" },
+  { value: "bundle", label: "বান্ডেল বই", icon: "📦" },
+  { value: "preset", label: "প্রিসেট বান্ডেল", icon: "⚡" },
 ];
 
 const CLASS_OPTIONS = [
   { value: "all", label: "সব ক্লাস" },
-  { value: "admission", label: "ভর্তি" },
-  { value: "hsc", label: "এইচএসসি" },
-  { value: "ssc", label: "এসএসসি" },
+  { value: "admission", label: "Admission" },
+  { value: "hsc", label: "HSC" },
+  { value: "ssc", label: "SSC" },
 ];
 
 const CATEGORY_OPTIONS = [
@@ -578,7 +578,7 @@ export default function Subscription() {
         }}
       >
         <div style={{ fontSize: 10, color: C.textFade, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 5 }}>
-          Royal Scientific
+          The Royal Scientific Publications Ltd. 
         </div>
 
         <div style={{ fontSize: 27, color: C.text, fontWeight: 800, letterSpacing: "-0.5px", lineHeight: 1.1 }}>
@@ -668,9 +668,9 @@ export default function Subscription() {
 
             {singleCourse && (
               <Card>
-                <StyledSelect label="সাবস্ক্রিপশন বছর" value={singleYear} onChange={(e) => setSingleYear(e.target.value)}>
+                {/* <StyledSelect label="সাবস্ক্রিপশন বছর" value={singleYear} onChange={(e) => setSingleYear(e.target.value)}>
                   {subscriptionYears.map((y) => <option key={y} value={y}>{y}</option>)}
-                </StyledSelect>
+                </StyledSelect> */}
 
                 <div style={{ marginTop: 14 }}>
                   <SLabel>অর্ডার সারাংশ</SLabel>
@@ -718,9 +718,9 @@ export default function Subscription() {
                     boxSizing: "border-box",
                   }}
                 />
-                <StyledSelect label="বছর" value={bundleYear} onChange={(e) => setBundleYear(e.target.value)}>
+                {/* <StyledSelect label="বছর" value={bundleYear} onChange={(e) => setBundleYear(e.target.value)}>
                   {subscriptionYears.map((y) => <option key={y} value={y}>{y}</option>)}
-                </StyledSelect>
+                </StyledSelect> */}
               </div>
             </Card>
 

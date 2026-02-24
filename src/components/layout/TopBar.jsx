@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import logo from "/logo.png";
 
 export default function TopBar({ title, onMenu }) {
   return (
@@ -23,10 +24,15 @@ export default function TopBar({ title, onMenu }) {
             </div>
 
             {/* Logo */}
-            <div className="relative grid h-11 w-11 place-items-center rounded-2xl border border-white/12 bg-gradient-to-br from-rose-500/25 via-red-500/20 to-orange-500/10 shadow-[0_18px_40px_-25px_rgba(255,35,80,0.9)]">
-              <span className="text-sm font-extrabold">RS</span>
-              <span className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-rose-500/20 to-transparent blur-lg" />
-            </div>
+            {/* <div className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-br from-rose-500/25 via-red-500/20 to-orange-500/10 shadow-[0_18px_40px_-25px_rgba(255,35,80,0.9)]"> */}
+              <img
+                src={logo}
+                alt="Royal Scientific"
+                className="h-8 w-8 object-contain"
+                draggable={false}
+              />
+              {/* <span className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-rose-500/20 to-transparent blur-lg" />
+            </div> */}
           </div>
 
           {/* Sub glow line */}

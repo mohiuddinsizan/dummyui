@@ -11,8 +11,8 @@ export default function Home() {
       <Card className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="text-[11px] font-semibold text-white/60">
-              স্বাগতম 👋
+            <div className="text-[11px] font-extrabold text-white/60">
+              <b>WELCOME 👋</b>
             </div>
 
             <div className="mt-1 text-lg leading-snug font-extrabold">
@@ -25,9 +25,9 @@ export default function Home() {
 
             {/* Optional quick actions for mobile */}
             <div className="mt-3 flex flex-wrap gap-2">
-              <Badge>ভর্তি</Badge>
-              <Badge>এইচএসসি</Badge>
-              <Badge>এসএসসি</Badge>
+              <Badge>Admission</Badge>
+              <Badge>HSC</Badge>
+              <Badge>SSC</Badge>
             </div>
           </div>
 

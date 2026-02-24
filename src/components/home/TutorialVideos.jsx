@@ -7,7 +7,7 @@ export default function TutorialVideos() {
     <div className="space-y-2">
       <div>
         <div className="text-sm font-extrabold">Tutorial Videos</div>
-        <div className="text-xs text-white/60">YouTube-style thumbnails</div>
+        {/* <div className="text-xs text-white/60">YouTube-style thumbnails</div> */}
       </div>
 
       <div className="grid gap-3">

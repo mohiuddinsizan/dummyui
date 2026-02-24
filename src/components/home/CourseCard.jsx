@@ -23,51 +23,51 @@ function subLabel(v) {
 
 export default function CourseCard({ course }) {
   const c = course || {};
+
   return (
-    <Card className="w-[280px] shrink-0 overflow-hidden">
-      {/* Top half image */}
-      <div className="relative h-32">
+    <Card>
+      {/* Top half image — increased to h-72 for tall/portrait book covers */}
+      <div className="relative w-full h-72 bg-gray-100 overflow-hidden rounded-t-xl">
         {c.image ? (
           <img
             src={c.image}
-            alt={c.name || "Book"}
-            className="h-full w-full object-cover"
-            loading="lazy"
+            alt={c.name || "বই"}
+            className="w-full h-full object-cover"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
           />
         ) : (
-          <div className="h-full w-full bg-white/5" />
+          <div className="w-full h-full flex items-center justify-center text-gray-400 text-4xl">
+            📚
+          </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
-        <div className="absolute bottom-2 left-2 right-2 flex items-end justify-between gap-2">
-          <div className="min-w-0">
-            <div className="text-sm font-extrabold leading-snug truncate">
-              {c.name || "বই"}
-            </div>
-            <div className="mt-1 flex flex-wrap gap-1.5">
-              <Badge>{catLabel(c.category)}</Badge>
-              <Badge>{subLabel(c.subcategory)}</Badge>
-            </div>
-          </div>
-
-          {c.validity ? (
-            <div className="flex-shrink-0">
-              <Badge>{c.validity}</Badge>
-            </div>
-          ) : null}
+        <div className="absolute top-2 left-2 flex gap-1 flex-wrap">
+          <Badge>{catLabel(c.category)}</Badge>
+          <Badge variant="secondary">{subLabel(c.subcategory)}</Badge>
         </div>
+
+        {c.validity ? (
+          <div className="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded">
+            {c.validity}
+          </div>
+        ) : null}
       </div>
 
-      {/* Bottom half description */}
-      <div className="p-4">
-        <div className="text-sm text-white/70">{c.desc || "—"}</div>
-        <div className="mt-3 flex items-center justify-between">
-          <div className="text-xs text-white/60">মূল্য</div>
-          <div className="text-base font-extrabold">৳ {money(c.price)}</div>
+      {/* Bottom half description — all unchanged */}
+      <div className="p-3 flex flex-col gap-1">
+        <p className="font-semibold text-sm leading-snug line-clamp-2">
+          {c.name || "বই"}
+        </p>
+        <p className="text-xs text-gray-500 line-clamp-2">
+          {c.desc || "—"}
+        </p>
+        <div className="flex items-center justify-between mt-1">
+          <span className="text-xs text-gray-400">মূল্য</span>
+          <span className="font-bold text-sm text-green-600">
+            ৳ {money(c.price)}
+          </span>
         </div>
       </div>
     </Card>
