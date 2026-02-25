@@ -1,5 +1,5 @@
 // src/pages/ChapterDetail.jsx
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ResponsiveContainer,
@@ -69,7 +69,18 @@ function bnDigitsToNumber(x) {
   if (x == null) return null;
   const s = String(x).trim();
   if (!s) return null;
-  const map = { "০": "0", "১": "1", "২": "2", "৩": "3", "৪": "4", "৫": "5", "৬": "6", "৭": "7", "৮": "8", "৯": "9" };
+  const map = {
+    "০": "0",
+    "১": "1",
+    "২": "2",
+    "৩": "3",
+    "৪": "4",
+    "৫": "5",
+    "৬": "6",
+    "৭": "7",
+    "৮": "8",
+    "৯": "9",
+  };
   const normalized = s.replace(/[০-৯]/g, (d) => map[d] ?? d);
   const n = Number(normalized);
   return Number.isFinite(n) ? n : null;
@@ -315,12 +326,26 @@ const ChartTooltip = ({ active, payload, label }) => {
       }}
     >
       {label && (
-        <div style={{ fontSize: 11, color: C.textDim, marginBottom: 4, fontWeight: 900 }}>
+        <div
+          style={{
+            fontSize: 11,
+            color: C.textDim,
+            marginBottom: 4,
+            fontWeight: 900,
+          }}
+        >
           {label}
         </div>
       )}
       {payload.map((p, i) => (
-        <div key={i} style={{ fontSize: 13, fontWeight: 950, color: p.color || C.text }}>
+        <div
+          key={i}
+          style={{
+            fontSize: 13,
+            fontWeight: 950,
+            color: p.color || C.text,
+          }}
+        >
           {p.name}: <span style={{ color: C.text }}>{p.value}</span>
         </div>
       ))}
@@ -346,13 +371,19 @@ export default function ChapterDetail() {
 
   const [tab, setTab] = useState("board");
 
-  const [board, setBoard] = useState(boardAnalytics.boards[0]);
-  const [year, setYear] = useState(boardAnalytics.years[boardAnalytics.years.length - 1]);
+  // ✅ All options
+  const [board, setBoard] = useState("all"); // "all" | boardName
+  const [year, setYear] = useState("all"); // "all" | year
 
   // filters
   const [query, setQuery] = useState("");
-  const [sortMode, setSortMode] = useState("tag");
-  const [selectedTags, setSelectedTags] = useState([]); // ✅ multi-tag (inside component)
+  const [sortMode, setSortMode] = useState("tag"); // still exists, now controlled inside TagDropdown
+  const [selectedTags, setSelectedTags] = useState([]); // multi-tag
+
+  // ✅ tag dropdown UI state
+  const [tagOpen, setTagOpen] = useState(false);
+  const [tagSearch, setTagSearch] = useState("");
+  const tagRef = useRef(null);
 
   // paging
   const [cqPage, setCqPage] = useState(1);
@@ -397,18 +428,62 @@ export default function ChapterDetail() {
     if (tab === "cq") setCqPage(1);
     if (tab === "mcq") setMcqPage(1);
     setQuery("");
-    setSelectedTags([]); // reset multi-tag on tab switch
+    setSelectedTags([]);
+    setTagOpen(false);
+    setTagSearch("");
+    setSortMode("tag");
   }, [tab]);
 
-  const barData = useMemo(
-    () => boardAnalytics.years.map((y) => ({ year: y, questions: boardAnalytics.data[board][y] })),
-    [board]
-  );
+  // close tag dropdown on outside click
+  useEffect(() => {
+    const onDown = (e) => {
+      if (!tagOpen) return;
+      if (tagRef.current && tagRef.current.contains(e.target)) return;
+      setTagOpen(false);
+    };
+    window.addEventListener("mousedown", onDown);
+    return () => window.removeEventListener("mousedown", onDown);
+  }, [tagOpen]);
 
-  const pieData = useMemo(
-    () => boardAnalytics.boards.map((b) => ({ name: b, value: boardAnalytics.data[b][year] })),
-    [year]
-  );
+  // ✅ BAR: per-year questions. If board === "all" => sum all boards.
+  const barData = useMemo(() => {
+    const years = Array.isArray(boardAnalytics?.years) ? boardAnalytics.years : [];
+    const boards = Array.isArray(boardAnalytics?.boards) ? boardAnalytics.boards : [];
+    const data = boardAnalytics?.data || {};
+
+    return years.map((y) => {
+      const questions =
+        board === "all"
+          ? boards.reduce((sum, b) => sum + Number(data?.[b]?.[y] || 0), 0)
+          : Number(data?.[board]?.[y] || 0);
+      return { year: y, questions };
+    });
+  }, [board]);
+
+  // ✅ PIE: board distribution. If year === "all" => sum across years.
+  const pieData = useMemo(() => {
+    const years = Array.isArray(boardAnalytics?.years) ? boardAnalytics.years : [];
+    const boards = Array.isArray(boardAnalytics?.boards) ? boardAnalytics.boards : [];
+    const data = boardAnalytics?.data || {};
+
+    return boards.map((b) => {
+      const value =
+        year === "all"
+          ? years.reduce((sum, y) => sum + Number(data?.[b]?.[y] || 0), 0)
+          : Number(data?.[b]?.[year] || 0);
+      return { name: b, value };
+    });
+  }, [year]);
+
+  const boardSummary = useMemo(() => {
+    const total = barData.reduce((s, x) => s + (Number(x.questions) || 0), 0);
+    const avg = barData.length ? total / barData.length : 0;
+    const maxItem = barData.reduce(
+      (best, cur) => ((cur.questions || 0) > (best.questions || 0) ? cur : best),
+      { year: "-", questions: 0 }
+    );
+    return { total, avg, maxItem };
+  }, [barData]);
 
   const allCqTags = useMemo(() => {
     const tags = new Set((expandedCQ || []).map((x) => String(x.tag || "").trim()).filter(Boolean));
@@ -420,13 +495,12 @@ export default function ChapterDetail() {
     return Array.from(tags).sort((a, b) => a.localeCompare(b));
   }, [expandedMCQ]);
 
-  // ✅ multi-tag + search filter wired into cqList/mcqList
+  // multi-tag + search filter wired into cqList/mcqList
   const cqList = useMemo(() => {
     const q = query.trim().toLowerCase();
     return [...expandedCQ]
       .filter((x) => {
-        const okTag =
-          selectedTags.length === 0 ? true : selectedTags.includes(String(x.tag || ""));
+        const okTag = selectedTags.length === 0 ? true : selectedTags.includes(String(x.tag || ""));
         if (!okTag) return false;
         if (!q) return true;
         return (
@@ -445,8 +519,7 @@ export default function ChapterDetail() {
     const q = query.trim().toLowerCase();
     return [...expandedMCQ]
       .filter((x) => {
-        const okTag =
-          selectedTags.length === 0 ? true : selectedTags.includes(String(x.tag || ""));
+        const okTag = selectedTags.length === 0 ? true : selectedTags.includes(String(x.tag || ""));
         if (!okTag) return false;
         if (!q) return true;
         return (
@@ -476,6 +549,259 @@ export default function ChapterDetail() {
     const start = (mcqPage - 1) * mcqPerPage;
     return mcqList.slice(start, start + mcqPerPage);
   }, [mcqList, mcqPage, mcqPerPage]);
+
+  // ✅ Tag Dropdown component (now ALSO holds sort toggle — replaces Sort row)
+  const TagDropdown = ({ tags }) => {
+    const list = Array.isArray(tags) ? tags : [];
+    const selectedCount = selectedTags.length;
+
+    const filtered = useMemo(() => {
+      const q = (tagSearch || "").trim().toLowerCase();
+      if (!q) return list;
+      return list.filter((t) => String(t).toLowerCase().includes(q));
+    }, [list, tagSearch]);
+
+    const toggle = (tag) => {
+      const s = String(tag);
+      setSelectedTags((prev) =>
+        prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
+      );
+      setCqPage(1);
+      setMcqPage(1);
+    };
+
+    const selectAll = () => {
+      setSelectedTags([...list]);
+      setCqPage(1);
+      setMcqPage(1);
+    };
+
+    const clearAll = () => {
+      setSelectedTags([]);
+      setCqPage(1);
+      setMcqPage(1);
+    };
+
+    return (
+      <div ref={tagRef} style={{ position: "relative" }}>
+        <div
+          style={{
+            fontSize: 10,
+            fontWeight: 900,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: C.textDim,
+            marginBottom: 6,
+          }}
+        >
+          TAG / SORT
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setTagOpen((v) => !v)}
+          style={{
+            width: "100%",
+            background: C.card2,
+            border: `1px solid ${C.border2}`,
+            borderRadius: 12,
+            padding: "10px 36px 10px 13px", // ✅ same size as StyledSelect
+            color: C.text,
+            fontSize: 13,
+            fontWeight: 900,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 10,
+          }}
+        >
+          <span style={{ color: selectedCount ? C.text : C.textFade }}>
+            {selectedCount === 0 ? "সব Tag" : `${selectedCount} টি Tag সিলেক্টেড`}
+          </span>
+          <span style={{ color: C.textGhost, fontSize: 12 }}>{tagOpen ? "▲" : "▼"}</span>
+        </button>
+
+        {tagOpen ? (
+          <div
+            style={{
+              position: "absolute",
+              top: "calc(100% + 8px)",
+              left: 0,
+              right: 0,
+              zIndex: 80,
+              background: C.card,
+              border: `1px solid ${C.border2}`,
+              borderRadius: 14,
+              overflow: "hidden",
+              boxShadow: "0 18px 50px rgba(0,0,0,0.65)",
+            }}
+          >
+            <div style={{ padding: 10, borderBottom: `1px solid ${C.border}` }}>
+              {/* ✅ sort toggle moved here (no extra row outside) */}
+              <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+                <button
+                  type="button"
+                  onClick={() => setSortMode("tag")}
+                  style={{
+                    flex: 1,
+                    padding: "9px 10px",
+                    borderRadius: 12,
+                    background: sortMode === "tag" ? `${C.red}22` : C.card2,
+                    border: `1px solid ${sortMode === "tag" ? `${C.red}55` : C.border2}`,
+                    color: sortMode === "tag" ? C.text : C.textDim,
+                    fontWeight: 950,
+                    fontSize: 12,
+                    cursor: "pointer",
+                  }}
+                >
+                  Sort: Tag
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSortMode("name")}
+                  style={{
+                    flex: 1,
+                    padding: "9px 10px",
+                    borderRadius: 12,
+                    background: sortMode === "name" ? `${C.red}22` : C.card2,
+                    border: `1px solid ${sortMode === "name" ? `${C.red}55` : C.border2}`,
+                    color: sortMode === "name" ? C.text : C.textDim,
+                    fontWeight: 950,
+                    fontSize: 12,
+                    cursor: "pointer",
+                  }}
+                >
+                  Sort: প্রশ্ন
+                </button>
+              </div>
+
+              <input
+                value={tagSearch}
+                onChange={(e) => setTagSearch(e.target.value)}
+                placeholder="Tag খুঁজুন…"
+                style={{
+                  width: "100%",
+                  background: C.card2,
+                  border: `1px solid ${C.border2}`,
+                  borderRadius: 12,
+                  padding: "10px 12px",
+                  color: C.text,
+                  fontSize: 13,
+                  outline: "none",
+                  fontWeight: 800,
+                  boxSizing: "border-box",
+                }}
+              />
+
+              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                <button
+                  type="button"
+                  onClick={selectAll}
+                  style={{
+                    flex: 1,
+                    padding: "9px 10px",
+                    borderRadius: 12,
+                    background: C.card2,
+                    border: `1px solid ${C.border2}`,
+                    color: C.textDim,
+                    fontWeight: 950,
+                    fontSize: 12,
+                    cursor: "pointer",
+                  }}
+                >
+                  Select All
+                </button>
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  style={{
+                    flex: 1,
+                    padding: "9px 10px",
+                    borderRadius: 12,
+                    background: C.redDark,
+                    border: `1px solid ${C.red}33`,
+                    color: C.redLight,
+                    fontWeight: 950,
+                    fontSize: 12,
+                    cursor: "pointer",
+                  }}
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <div style={{ maxHeight: 260, overflow: "auto", padding: 10 }}>
+              {filtered.length === 0 ? (
+                <div style={{ padding: 10, color: C.textFade, fontWeight: 800, fontSize: 12 }}>
+                  কোনো Tag মেলেনি।
+                </div>
+              ) : (
+                filtered.map((t) => {
+                  const active = selectedTags.includes(String(t));
+                  return (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => toggle(t)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "10px 10px",
+                        borderRadius: 12,
+                        background: active ? `${C.red}18` : "transparent",
+                        border: `1px solid ${active ? `${C.red}44` : "transparent"}`,
+                        cursor: "pointer",
+                        textAlign: "left",
+                        marginBottom: 6,
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: 18,
+                          height: 18,
+                          borderRadius: 6,
+                          border: `1px solid ${active ? `${C.red}99` : C.border2}`,
+                          background: active ? C.red : C.card2,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: active ? "#fff" : C.textGhost,
+                          fontSize: 12,
+                          fontWeight: 1000,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {active ? "✓" : ""}
+                      </span>
+                      <span
+                        style={{
+                          color: active ? C.text : C.textDim,
+                          fontSize: 13,
+                          fontWeight: 900,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+
+            <div style={{ padding: 10, borderTop: `1px solid ${C.border}` }}>
+              <PrimaryBtn full onClick={() => setTagOpen(false)}>
+                Done
+              </PrimaryBtn>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    );
+  };
 
   if (!book || !chapter) {
     return (
@@ -513,7 +839,9 @@ export default function ChapterDetail() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
           <GhostBtn
             disabled={page <= 1}
-            onClick={() => (isCQ ? setCqPage((p) => Math.max(1, p - 1)) : setMcqPage((p) => Math.max(1, p - 1)))}
+            onClick={() =>
+              isCQ ? setCqPage((p) => Math.max(1, p - 1)) : setMcqPage((p) => Math.max(1, p - 1))
+            }
           >
             ← Prev
           </GhostBtn>
@@ -527,7 +855,11 @@ export default function ChapterDetail() {
 
           <GhostBtn
             disabled={page >= total}
-            onClick={() => (isCQ ? setCqPage((p) => Math.min(cqTotalPages, p + 1)) : setMcqPage((p) => Math.min(mcqTotalPages, p + 1)))}
+            onClick={() =>
+              isCQ
+                ? setCqPage((p) => Math.min(cqTotalPages, p + 1))
+                : setMcqPage((p) => Math.min(mcqTotalPages, p + 1))
+            }
           >
             Next →
           </GhostBtn>
@@ -655,56 +987,121 @@ export default function ChapterDetail() {
 
       {/* ── BODY ── */}
       <div style={{ padding: "16px 14px 0" }}>
-
         {/* BOARD */}
         {tab === "board" && (
           <div style={card()}>
             <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 15, fontWeight: 1000, color: C.text }}>বোর্ড বিশ্লেষণ</div>
-              <div style={{ fontSize: 11, color: C.textFade, marginTop: 3, fontWeight: 800 }}>
-                বোর্ড বা বছর বেছে নিন, চার্ট আপডেট হবে
+              <div style={{ fontSize: 16, fontWeight: 1100, color: C.text }}>
+                বোর্ড বিশ্লেষণ (এই অধ্যায়ের প্রশ্ন ট্রেন্ড)
               </div>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
-              <StyledSelect label="বোর্ড" value={board} onChange={(e) => setBoard(e.target.value)}>
+            {/* selectors */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+              <StyledSelect label="বোর্ড (Bar চার্ট)" value={board} onChange={(e) => setBoard(e.target.value)}>
+                <option value="all">সব বোর্ড</option>
                 {boardAnalytics.boards.map((b) => (
-                  <option key={b} value={b}>{b}</option>
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
                 ))}
               </StyledSelect>
-              <StyledSelect label="বছর" value={year} onChange={(e) => setYear(e.target.value)}>
+
+              <StyledSelect label="বছর (Pie চার্ট)" value={year} onChange={(e) => setYear(e.target.value)}>
+                <option value="all">সব বছর</option>
                 {boardAnalytics.years.map((y) => (
-                  <option key={y} value={y}>{y}</option>
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
                 ))}
               </StyledSelect>
             </div>
 
-            <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: "14px 12px 10px", marginBottom: 12 }}>
-              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 10, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                বছর অনুযায়ী প্রশ্ন — {board}
+            {/* summary strip */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 14 }}>
+              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
+                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
+                  মোট প্রশ্ন
+                </div>
+                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
+                  {Math.round(boardSummary.total)}
+                </div>
+                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
+                  {board === "all" ? "সব বোর্ড (সব বছর)" : `${board} (সব বছর)`}
+                </div>
               </div>
-              <div style={{ width: "100%", height: 200 }}>
+
+              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
+                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
+                  গড় / বছর
+                </div>
+                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
+                  {boardSummary.avg.toFixed(1)}
+                </div>
+                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
+                  Bar চার্টের ডেটা থেকে
+                </div>
+              </div>
+
+              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
+                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
+                  সর্বোচ্চ বছর
+                </div>
+                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
+                  {boardSummary.maxItem.questions}
+                </div>
+                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
+                  বছর: {boardSummary.maxItem.year}
+                </div>
+              </div>
+            </div>
+
+            {/* bar */}
+            <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: "14px 12px 10px", marginBottom: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                বছর অনুযায়ী প্রশ্ন — {board === "all" ? "সব বোর্ড" : board}
+              </div>
+              <div style={{ fontSize: 12, color: C.textFade, marginBottom: 10, fontWeight: 800 }}>
+                {board === "all" ? "সব বোর্ড মিলিয়ে প্রতি বছরে মোট প্রশ্ন" : "নির্বাচিত বোর্ডে প্রতি বছরে প্রশ্ন সংখ্যা"}
+              </div>
+
+              <div style={{ width: "100%", height: 220 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={barData} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
                     <CartesianGrid stroke={C.border} strokeDasharray="3 3" vertical={false} />
                     <XAxis dataKey="year" tick={{ fill: C.textDim, fontSize: 10 }} axisLine={{ stroke: C.border2 }} tickLine={false} />
                     <YAxis tick={{ fill: C.textDim, fontSize: 10 }} axisLine={false} tickLine={false} width={24} />
                     <Tooltip content={<ChartTooltip />} cursor={{ fill: `${C.red}18` }} />
-                    <Bar dataKey="questions" fill={C.red} radius={[6, 6, 0, 0]} maxBarSize={36} />
+                    <Bar dataKey="questions" name="Questions" fill={C.red} radius={[6, 6, 0, 0]} maxBarSize={42} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
+            {/* pie */}
             <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: "14px 12px 14px" }}>
-              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 10, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                বোর্ড অনুপাত — {year}
+              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                বোর্ড অনুপাত — {year === "all" ? "সব বছর" : year}
               </div>
-              <div style={{ width: "100%", height: 200 }}>
+              <div style={{ fontSize: 12, color: C.textFade, marginBottom: 10, fontWeight: 800 }}>
+                {year === "all" ? "সব বছর মিলিয়ে কোন বোর্ডে কত প্রশ্ন এসেছে" : "নির্বাচিত বছরে কোন বোর্ডে কত প্রশ্ন এসেছে"}
+              </div>
+
+              <div style={{ width: "100%", height: 220 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Tooltip content={<ChartTooltip />} />
-                    <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={82} innerRadius={36} stroke={C.card2} strokeWidth={3}>
+                    <Pie
+                      data={pieData}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={86}
+                      innerRadius={38}
+                      stroke={C.card2}
+                      strokeWidth={3}
+                    >
                       {pieData.map((_, i) => (
                         <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
                       ))}
@@ -722,9 +1119,21 @@ export default function ChapterDetail() {
             <SLabel>প্রাসঙ্গিক তথ্য</SLabel>
             <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
               {relevantInfoRows.map((r, idx) => (
-                <div key={idx} style={{ display: "flex", gap: 12, padding: "13px 16px", borderBottom: idx < relevantInfoRows.length - 1 ? `1px solid ${C.border}` : "none" }}>
-                  <div style={{ width: "36%", flexShrink: 0, fontSize: 12, fontWeight: 950, color: C.text, lineHeight: 1.5 }}>{r.name}</div>
-                  <div style={{ flex: 1, fontSize: 12, color: C.textDim, lineHeight: 1.75, fontWeight: 700 }}>{r.desc}</div>
+                <div
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    padding: "13px 16px",
+                    borderBottom: idx < relevantInfoRows.length - 1 ? `1px solid ${C.border}` : "none",
+                  }}
+                >
+                  <div style={{ width: "36%", flexShrink: 0, fontSize: 12, fontWeight: 950, color: C.text, lineHeight: 1.5 }}>
+                    {r.name}
+                  </div>
+                  <div style={{ flex: 1, fontSize: 12, color: C.textDim, lineHeight: 1.75, fontWeight: 700 }}>
+                    {r.desc}
+                  </div>
                 </div>
               ))}
             </div>
@@ -764,23 +1173,29 @@ export default function ChapterDetail() {
           <>
             {/* ── FILTER BAR ── */}
             <div style={card()}>
-
-              {/* Row 1: Sort + Per Page */}
+              {/* ✅ Row 1: Tag+Sort (dropdown) + Per Page  (no extra row anymore) */}
               <div style={{ display: "flex", gap: 10 }}>
                 <div style={{ flex: 1 }}>
-                  <StyledSelect label="Sort" value={sortMode} onChange={(e) => setSortMode(e.target.value)}>
-                    <option value="tag">Tag অনুযায়ী</option>
-                    <option value="name">প্রশ্ন অনুযায়ী</option>
-                  </StyledSelect>
+                  {(tab === "cq" ? allCqTags : allMcqTags).length > 0 ? (
+                    <TagDropdown tags={tab === "cq" ? allCqTags : allMcqTags} />
+                  ) : (
+                    <div style={{ height: 58 }} />
+                  )}
                 </div>
+
                 <div style={{ flex: 1 }}>
                   <StyledSelect
                     label="Per Page"
                     value={tab === "cq" ? cqPerPage : mcqPerPage}
                     onChange={(e) => {
                       const n = Number(e.target.value) || 5;
-                      if (tab === "cq") { setCqPerPage(n); setCqPage(1); }
-                      else { setMcqPerPage(n); setMcqPage(1); }
+                      if (tab === "cq") {
+                        setCqPerPage(n);
+                        setCqPage(1);
+                      } else {
+                        setMcqPerPage(n);
+                        setMcqPage(1);
+                      }
                     }}
                   >
                     <option value={5}>5</option>
@@ -794,69 +1209,14 @@ export default function ChapterDetail() {
               <div style={{ marginTop: 10 }}>
                 <SearchBox
                   value={query}
-                  onChange={(e) => { setQuery(e.target.value); setCqPage(1); setMcqPage(1); }}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setCqPage(1);
+                    setMcqPage(1);
+                  }}
                   placeholder="প্রশ্ন/কীওয়ার্ড দিয়ে খুঁজুন…"
                 />
               </div>
-
-              {/* Row 3: Multi-tag chips (dynamic from data) */}
-              {(tab === "cq" ? allCqTags : allMcqTags).length > 0 && (
-                <div style={{ marginTop: 12 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: C.textFade, marginBottom: 6 }}>
-                    Tag ফিল্টার
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-
-                    {/* "সব" chip */}
-                    <button
-                      onClick={() => { setSelectedTags([]); setCqPage(1); setMcqPage(1); }}
-                      style={{
-                        padding: "5px 13px",
-                        borderRadius: 999,
-                        fontSize: 12,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        border: `1.5px solid ${selectedTags.length === 0 ? C.red : C.border2}`,
-                        background: selectedTags.length === 0 ? C.red : "transparent",
-                        color: selectedTags.length === 0 ? "#fff" : C.textFade,
-                        transition: "all 0.15s",
-                      }}
-                    >
-                      সব
-                    </button>
-
-                    {/* dynamic tag chips */}
-                    {(tab === "cq" ? allCqTags : allMcqTags).map((tag) => {
-                      const active = selectedTags.includes(tag);
-                      return (
-                        <button
-                          key={tag}
-                          onClick={() => {
-                            setSelectedTags((prev) =>
-                              prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-                            );
-                            setCqPage(1);
-                            setMcqPage(1);
-                          }}
-                          style={{
-                            padding: "5px 13px",
-                            borderRadius: 999,
-                            fontSize: 12,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            border: `1.5px solid ${active ? C.red : C.border2}`,
-                            background: active ? C.red : "transparent",
-                            color: active ? "#fff" : C.textFade,
-                            transition: "all 0.15s",
-                          }}
-                        >
-                          {tag}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* ── QUESTION LIST ── */}

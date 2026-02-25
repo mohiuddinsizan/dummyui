@@ -365,7 +365,7 @@ export const myBooks = [
     title: "এইচএসসি পদার্থবিজ্ঞান — ১ম পত্র",
     subtitle: "কনসেপ্ট + বোর্ড ফোকাস",
     thumb:
-      "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+      "1.png",
     chapters: [
       { id: "hsc-phy1-ch1", title: "ভৌতজগৎ ও পরিমাপ", duration: "18 min" },
       { id: "hsc-phy1-ch2", title: "ভেক্টর", duration: "22 min" },
@@ -385,7 +385,7 @@ export const myBooks = [
     title: "এইচএসসি পদার্থবিজ্ঞান — ২য় পত্র",
     subtitle: "তড়িৎ + চৌম্বকত্ব + আলোকবিজ্ঞান",
     thumb:
-      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+      "2.png",
     chapters: [
       { id: "hsc-phy2-ch1", title: "তাপগতিবিদ্যা", duration: "24 min" },
       { id: "hsc-phy2-ch2", title: "স্থির তড়িৎ", duration: "26 min" },
@@ -404,7 +404,7 @@ export const myBooks = [
     title: "এইচএসসি রসায়ন — ১ম পত্র",
     subtitle: "গুণগত + পর্যায়বৃত্ত ধর্ম + পরিবর্তন",
     thumb:
-      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+      "3.png",
     // (অনলাইনে প্রচলিত লিস্টিং অনুযায়ী) :contentReference[oaicite:1]{index=1}
     chapters: [
       { id: "hsc-chem1-ch2", title: "গুণগত রসায়ন", duration: "26 min" },
@@ -419,7 +419,7 @@ export const myBooks = [
     title: "এইচএসসি রসায়ন — ২য় পত্র",
     subtitle: "পরিবেশ + জৈব + তড়িৎ রসায়ন",
     thumb:
-      "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
+      "6.png",
     chapters: [
       { id: "hsc-chem2-ch1", title: "পরিবেশ রসায়ন", duration: "20 min" },
       { id: "hsc-chem2-ch2", title: "জৈব রসায়ন", duration: "28 min" },
@@ -435,7 +435,7 @@ export const myBooks = [
     title: "এসএসসি পদার্থবিজ্ঞান",
     subtitle: "নবম-দশম — বোর্ড ভিত্তিক",
     thumb:
-      "https://www.physicstutoronline.co.uk/wp-content/uploads/2019/05/physics1.jpg",
+      "8.png",
     chapters: [
       { id: "ssc-phy-ch1", title: "ভৌত রাশি ও পরিমাপ", duration: "16 min" },
       { id: "ssc-phy-ch2", title: "গতি", duration: "18 min" },
@@ -458,7 +458,7 @@ export const myBooks = [
     title: "এসএসসি রসায়ন",
     subtitle: "নবম-দশম — কনসেপ্ট + অনুশীলনী",
     thumb:
-      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+      "9.png",
     chapters: [
       { id: "ssc-chem-ch1", title: "রসায়নের ধারণা", duration: "16 min" },
       { id: "ssc-chem-ch2", title: "পদার্থের অবস্থা", duration: "18 min" },
@@ -476,7 +476,7 @@ export const myBooks = [
     title: "ভার্সিটি ভর্তি পদার্থবিজ্ঞান (MCQ + CQ)",
     subtitle: "ফিজিক্স বেসিক → এডভান্স (ইউনিট টার্গেট)",
     thumb:
-      "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+      "10.png",
     chapters: [
       { id: "adm-phy-ch1", title: "ভেক্টর + কাইনেমেটিক্স রিভিশন", duration: "22 min" },
       { id: "adm-phy-ch2", title: "নিউটন + ঘর্ষণ (Problem Solving)", duration: "25 min" },
@@ -491,7 +491,7 @@ export const myBooks = [
     title: "ভার্সিটি ভর্তি রসায়ন (MCQ স্পেশাল)",
     subtitle: "জৈব + অজৈব + গণনা",
     thumb:
-      "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+      "11.png",
     chapters: [
       { id: "adm-chem-ch1", title: "পর্যায় সারণি + রাসায়নিক বন্ধন (Fast Recap)", duration: "22 min" },
       { id: "adm-chem-ch2", title: "মোল/ঘনমাত্রা/স্টইকিওমেট্রি", duration: "26 min" },
@@ -508,7 +508,7 @@ export const myBundles = [
     title: "HSC Quick Preparation Series",
     subtitle: "Physics + Chemistry (১ম/২য় পত্র) কম্বো",
     thumb:
-      "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
+      "5.png",
     books: [
       { id: "bk-hsc-phy-1st", title: "এইচএসসি পদার্থবিজ্ঞান — ১ম পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-phy-1st")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-phy-1st")?.chapters || [] },
       { id: "bk-hsc-phy-2nd", title: "এইচএসসি পদার্থবিজ্ঞান — ২য় পত্র", thumb: myBooks.find(b => b.id === "bk-hsc-phy-2nd")?.thumb, chapters: myBooks.find(b => b.id === "bk-hsc-phy-2nd")?.chapters || [] },
@@ -522,7 +522,7 @@ export const myBundles = [
     title: "Varsity Admission Series",
     subtitle: "Physics + Chemistry (Unit Target)",
     thumb:
-      "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
+      "8.png",
     books: [
       { id: "bk-adm-varsity-phy", title: "ভার্সিটি ভর্তি পদার্থবিজ্ঞান (MCQ + CQ)", thumb: myBooks.find(b => b.id === "bk-adm-varsity-phy")?.thumb, chapters: myBooks.find(b => b.id === "bk-adm-varsity-phy")?.chapters || [] },
       { id: "bk-adm-varsity-chem", title: "ভার্সিটি ভর্তি রসায়ন (MCQ স্পেশাল)", thumb: myBooks.find(b => b.id === "bk-adm-varsity-chem")?.thumb, chapters: myBooks.find(b => b.id === "bk-adm-varsity-chem")?.chapters || [] },

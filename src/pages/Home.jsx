@@ -25,9 +25,9 @@ export default function Home() {
 
             {/* Optional quick actions for mobile */}
             <div className="mt-3 flex flex-wrap gap-2">
-              <Badge>Admission</Badge>
-              <Badge>HSC</Badge>
-              <Badge>SSC</Badge>
+              <Badge>Admission Books</Badge>
+              <Badge>HSC Books</Badge>
+              <Badge>SSC Books</Badge>
             </div>
           </div>
 
