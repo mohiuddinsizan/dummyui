@@ -12,7 +12,7 @@ export default function AppShell({ children }) {
     const p = location.pathname;
     if (p.startsWith("/dashboard")) return "Dashboard";
     if (p.startsWith("/my-courses")) return "My Courses";
-    if (p.startsWith("/test")) return "Take Test";
+    if (p.startsWith("/test")) return "Give Test";
     return "Home";
   }, [location.pathname]);
 

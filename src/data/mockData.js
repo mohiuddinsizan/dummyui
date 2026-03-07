@@ -183,7 +183,7 @@ export const homeCourses = [
     price: 139,
     validity: "60 দিন",
     desc: "মডেল টেস্ট + সমাধান",
-    image: "https://www.shutterstock.com/shutterstock/photos/2301519911/display_1500/stock-photo-physics-equations-floating-in-the-background-hands-writing-in-notebooks-on-work-tables-2301519911.jpg",
+    image: "5.png",
     category: "ssc",
     subcategory: "test_paper",
   },
@@ -194,7 +194,7 @@ export const homeCourses = [
     price: 169,
     validity: "90 দিন",
     desc: "মৌল, যৌগ, রাসায়নিক বিক্রিয়া — কনসেপ্ট + CQ/MCQ",
-    image: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    image: "8.png",
     category: "ssc",
     subcategory: "understanding",
   },
@@ -204,7 +204,7 @@ export const homeCourses = [
     price: 189,
     validity: "120 দিন",
     desc: "সাজেশন, গুরুত্বপূর্ণ সূত্র, কমন প্রশ্ন",
-    image: "https://images.ctfassets.net/szez98lehkfm/2g2qAwNo9g1sqNTMM8Dx09/a6255a7191b72e3024accbdd1ecec5ed/MyIC_Article_93347?w=730&h=410&fm=jpg&fit=fill",
+    image: "12.png",
     category: "ssc",
     subcategory: "guide",
   },
@@ -214,7 +214,7 @@ export const homeCourses = [
     price: 149,
     validity: "60 দিন",
     desc: "শর্ট নোট + MCQ সেট",
-    image: "https://m.media-amazon.com/images/I/51L1PrGek6L._AC_UF1000,1000_QL80_.jpg",
+    image: "2.png",
     category: "ssc",
     subcategory: "quick_preparation",
   },
@@ -224,7 +224,7 @@ export const homeCourses = [
     price: 139,
     validity: "60 দিন",
     desc: "মডেল টেস্ট + সমাধান",
-    image: "https://image.shutterstock.com/image-vector/chemistry-banner-outline-illustration-vector-260nw-1198049536.jpg",
+    image: "9.png",
     category: "ssc",
     subcategory: "test_paper",
   },
@@ -235,7 +235,7 @@ export const homeCourses = [
     price: 179,
     validity: "90 দিন",
     desc: "বীজগণিত, জ্যামিতি, ত্রিকোণমিতি — কনসেপ্ট + উদাহরণ",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "10.png",
     category: "ssc",
     subcategory: "understanding",
   },
@@ -245,7 +245,7 @@ export const homeCourses = [
     price: 199,
     validity: "120 দিন",
     desc: "কমন প্রশ্ন + শর্ট টেকনিক + সাজেশন",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "3.png",
     category: "ssc",
     subcategory: "guide",
   },
@@ -255,7 +255,7 @@ export const homeCourses = [
     price: 149,
     validity: "60 দিন",
     desc: "ফর্মুলা রিভিশন + MCQ সেট",
-    image: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?auto=format&fit=crop&w=900&q=70",
+    image: "3.png",
     category: "ssc",
     subcategory: "quick_preparation",
   },
@@ -265,7 +265,7 @@ export const homeCourses = [
     price: 139,
     validity: "60 দিন",
     desc: "মডেল টেস্ট + সমাধান",
-    image: "https://c8.alamy.com/comp/2SJF9N4/book-title-mathematics-2SJF9N4.jpg",
+    image: "6.png",
     category: "ssc",
     subcategory: "test_paper",
   },
@@ -363,7 +363,7 @@ export const myBooks = [
   {
     id: "bk-hsc-phy-1st",
     title: "এইচএসসি পদার্থবিজ্ঞান — ১ম পত্র",
-    subtitle: "কনসেপ্ট + বোর্ড ফোকাস",
+    // subtitle: "কনসেপ্ট + বোর্ড ফোকাস",
     thumb:
       "1.png",
     chapters: [
@@ -433,7 +433,7 @@ export const myBooks = [
   {
     id: "bk-ssc-phy",
     title: "এসএসসি পদার্থবিজ্ঞান",
-    subtitle: "নবম-দশম — বোর্ড ভিত্তিক",
+    // subtitle: "নবম-দশম — বোর্ড ভিত্তিক",
     thumb:
       "8.png",
     chapters: [
@@ -456,7 +456,7 @@ export const myBooks = [
   {
     id: "bk-ssc-chem",
     title: "এসএসসি রসায়ন",
-    subtitle: "নবম-দশম — কনসেপ্ট + অনুশীলনী",
+    // subtitle: "নবম-দশম — কনসেপ্ট + অনুশীলনী",
     thumb:
       "9.png",
     chapters: [

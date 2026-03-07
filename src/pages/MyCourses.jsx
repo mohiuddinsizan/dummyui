@@ -186,14 +186,14 @@ export default function MyCourses() {
         />
         <div className="relative">
           <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-red-400/80">
-            লাইব্রেরি
+            Library
           </div>
           <div className="mt-1 text-xl font-black text-white tracking-tight">
             আমার বই ও বান্ডেল
           </div>
-          <div className="mt-1 text-[11px] text-white/50 leading-relaxed">
+          {/* <div className="mt-1 text-[11px] text-white/50 leading-relaxed">
             আপনি যেগুলো কিনেছেন — সব এখানে।
-          </div>
+          </div> */}
           <div className="mt-3 flex gap-2.5">
             <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1">
               <span className="text-[10px] font-bold text-white/55">বই</span>
