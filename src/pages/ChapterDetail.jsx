@@ -988,130 +988,342 @@ export default function ChapterDetail() {
       {/* ── BODY ── */}
       <div style={{ padding: "16px 14px 0" }}>
         {/* BOARD */}
-        {tab === "board" && (
-          <div style={card()}>
-            <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 16, fontWeight: 1100, color: C.text }}>
-                বোর্ড বিশ্লেষণ (এই অধ্যায়ের প্রশ্ন ট্রেন্ড)
-              </div>
-            </div>
 
-            {/* selectors */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
-              <StyledSelect label="বোর্ড (Bar চার্ট)" value={board} onChange={(e) => setBoard(e.target.value)}>
-                <option value="all">সব বোর্ড</option>
-                {boardAnalytics.boards.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
+
+        {tab === "board" && (() => {
+          /* ── derived insight text ─────────────────────────────── */
+          const topBoard = [...pieData].sort((a, b) => b.value - a.value)[0];
+          const hasData = boardSummary.total > 0;
+
+          return (
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+
+              {/* ── INSIGHT BANNER ─────────────────────────────────── */}
+              {hasData && (
+                <div style={{
+                  background: `${C.red}12`,
+                  border: `1px solid ${C.red}33`,
+                  borderRadius: 18,
+                  padding: "14px 18px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 12,
+                }}>
+                  {/* icon blob */}
+                  <div style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 10,
+                    background: `${C.red}22`,
+                    border: `1px solid ${C.red}44`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 17,
+                    flexShrink: 0,
+                  }}>
+                    📌
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 1000, color: C.text, marginBottom: 4, lineHeight: 1.4 }}>
+                      {board === "all"
+                        ? `সব বোর্ড মিলিয়ে এই অধ্যায় থেকে মোট ${Math.round(boardSummary.total)} টি প্রশ্ন এসেছে`
+                        : `${board} বোর্ডে এই অধ্যায় থেকে মোট ${Math.round(boardSummary.total)} টি প্রশ্ন এসেছে`}
+                    </div>
+                    <div style={{ fontSize: 12, color: C.textDim, fontWeight: 800, lineHeight: 1.6 }}>
+                      {boardSummary.maxItem.year !== "-" && (
+                        <>সবচেয়ে বেশি প্রশ্ন এসেছে <span style={{ color: C.redLight, fontWeight: 1000 }}>{boardSummary.maxItem.year}</span> সালে — {boardSummary.maxItem.questions} টি।</>
+                      )}
+                      {topBoard && year === "all" && (
+                        <> &nbsp;·&nbsp; সবচেয়ে বেশি প্রশ্ন করেছে <span style={{ color: C.skyLight, fontWeight: 1000 }}>{topBoard.name}</span> বোর্ড।</>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── 3 STAT CARDS ───────────────────────────────────── */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+                {[
+                  {
+                    icon: "🗂️",
+                    value: Math.round(boardSummary.total),
+                    label: "মোট প্রশ্ন",
+                    sub: board === "all" ? "সব বোর্ড" : board,
+                    color: C.red,
+                  },
+                  {
+                    icon: "📅",
+                    value: boardSummary.avg.toFixed(1),
+                    label: "গড় প্রতি বছরে",
+                    sub: "Bar চার্টের তথ্য থেকে",
+                    color: C.amber,
+                  },
+                  {
+                    icon: "🏆",
+                    value: boardSummary.maxItem.questions,
+                    label: "সর্বোচ্চ বছর",
+                    sub: boardSummary.maxItem.year !== "-" ? `${boardSummary.maxItem.year} সালে` : "—",
+                    color: C.green,
+                  },
+                ].map((s) => (
+                  <div key={s.label} style={{
+                    background: C.card2,
+                    border: `1px solid ${C.border}`,
+                    borderRadius: 16,
+                    padding: 14,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 4,
+                  }}>
+                    <div style={{ fontSize: 18 }}>{s.icon}</div>
+                    <div style={{ fontSize: 22, fontWeight: 1100, color: s.color, lineHeight: 1.1, marginTop: 2 }}>
+                      {s.value}
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 1000, color: C.text, lineHeight: 1.3 }}>
+                      {s.label}
+                    </div>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: C.textGhost, lineHeight: 1.3 }}>
+                      {s.sub}
+                    </div>
+                  </div>
                 ))}
-              </StyledSelect>
-
-              <StyledSelect label="বছর (Pie চার্ট)" value={year} onChange={(e) => setYear(e.target.value)}>
-                <option value="all">সব বছর</option>
-                {boardAnalytics.years.map((y) => (
-                  <option key={y} value={y}>
-                    {y}
-                  </option>
-                ))}
-              </StyledSelect>
-            </div>
-
-            {/* summary strip */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 14 }}>
-              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
-                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
-                  মোট প্রশ্ন
-                </div>
-                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
-                  {Math.round(boardSummary.total)}
-                </div>
-                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
-                  {board === "all" ? "সব বোর্ড (সব বছর)" : `${board} (সব বছর)`}
-                </div>
               </div>
 
-              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
-                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
-                  গড় / বছর
-                </div>
-                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
-                  {boardSummary.avg.toFixed(1)}
-                </div>
-                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
-                  Bar চার্টের ডেটা থেকে
-                </div>
-              </div>
+              {/* ── BAR CHART ──────────────────────────────────────── */}
+              <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 20, overflow: "hidden" }}>
+                {/* Chart header + inline filter */}
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: 10,
+                  padding: "14px 16px",
+                  borderBottom: `1px solid ${C.border}`,
+                  background: C.card2,
+                }}>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 1000, color: C.text }}>
+                      প্রতি বছরে কতটি প্রশ্ন এসেছে?
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: C.textFade, marginTop: 3 }}>
+                      {board === "all" ? "সব বোর্ড একসাথে দেখানো হচ্ছে" : `শুধু ${board} বোর্ড`}
+                    </div>
+                  </div>
 
-              <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: 12 }}>
-                <div style={{ fontSize: 10, fontWeight: 1000, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textDim }}>
-                  সর্বোচ্চ বছর
-                </div>
-                <div style={{ marginTop: 6, fontSize: 18, fontWeight: 1100, color: C.text }}>
-                  {boardSummary.maxItem.questions}
-                </div>
-                <div style={{ marginTop: 3, fontSize: 11, color: C.textFade, fontWeight: 800 }}>
-                  বছর: {boardSummary.maxItem.year}
-                </div>
-              </div>
-            </div>
-
-            {/* bar */}
-            <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: "14px 12px 10px", marginBottom: 12 }}>
-              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                বছর অনুযায়ী প্রশ্ন — {board === "all" ? "সব বোর্ড" : board}
-              </div>
-              <div style={{ fontSize: 12, color: C.textFade, marginBottom: 10, fontWeight: 800 }}>
-                {board === "all" ? "সব বোর্ড মিলিয়ে প্রতি বছরে মোট প্রশ্ন" : "নির্বাচিত বোর্ডে প্রতি বছরে প্রশ্ন সংখ্যা"}
-              </div>
-
-              <div style={{ width: "100%", height: 220 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={barData} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
-                    <CartesianGrid stroke={C.border} strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="year" tick={{ fill: C.textDim, fontSize: 10 }} axisLine={{ stroke: C.border2 }} tickLine={false} />
-                    <YAxis tick={{ fill: C.textDim, fontSize: 10 }} axisLine={false} tickLine={false} width={24} />
-                    <Tooltip content={<ChartTooltip />} cursor={{ fill: `${C.red}18` }} />
-                    <Bar dataKey="questions" name="Questions" fill={C.red} radius={[6, 6, 0, 0]} maxBarSize={42} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            {/* pie */}
-            <div style={{ background: C.card2, border: `1px solid ${C.border}`, borderRadius: 16, padding: "14px 12px 14px" }}>
-              <div style={{ fontSize: 11, fontWeight: 950, color: C.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                বোর্ড অনুপাত — {year === "all" ? "সব বছর" : year}
-              </div>
-              <div style={{ fontSize: 12, color: C.textFade, marginBottom: 10, fontWeight: 800 }}>
-                {year === "all" ? "সব বছর মিলিয়ে কোন বোর্ডে কত প্রশ্ন এসেছে" : "নির্বাচিত বছরে কোন বোর্ডে কত প্রশ্ন এসেছে"}
-              </div>
-
-              <div style={{ width: "100%", height: 220 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Tooltip content={<ChartTooltip />} />
-                    <Pie
-                      data={pieData}
-                      dataKey="value"
-                      nameKey="name"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={86}
-                      innerRadius={38}
-                      stroke={C.card2}
-                      strokeWidth={3}
+                  {/* inline board picker */}
+                  <div style={{ position: "relative" }}>
+                    <select
+                      value={board}
+                      onChange={(e) => setBoard(e.target.value)}
+                      style={{
+                        background: C.card,
+                        border: `1px solid ${C.border2}`,
+                        borderRadius: 10,
+                        padding: "7px 32px 7px 12px",
+                        color: C.text,
+                        fontSize: 12,
+                        fontWeight: 900,
+                        appearance: "none",
+                        cursor: "pointer",
+                        outline: "none",
+                      }}
                     >
-                      {pieData.map((_, i) => (
-                        <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+                      <option value="all">সব বোর্ড</option>
+                      {boardAnalytics.boards.map((b) => (
+                        <option key={b} value={b}>{b}</option>
                       ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
+                    </select>
+                    <svg style={{ position: "absolute", right: 9, top: "50%", transform: "translateY(-50%)", width: 12, height: 12, color: C.textGhost, pointerEvents: "none" }}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Bar chart */}
+                <div style={{ padding: "14px 12px 10px" }}>
+                  <div style={{ width: "100%", height: 210 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={barData} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+                        <CartesianGrid stroke={C.border} strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="year" tick={{ fill: C.textDim, fontSize: 10 }} axisLine={{ stroke: C.border2 }} tickLine={false} />
+                        <YAxis tick={{ fill: C.textDim, fontSize: 10 }} axisLine={false} tickLine={false} width={24} />
+                        <Tooltip content={<ChartTooltip />} cursor={{ fill: `${C.red}18` }} />
+                        <Bar dataKey="questions" name="প্রশ্ন" fill={C.red} radius={[6, 6, 0, 0]} maxBarSize={42} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  {/* Zero-state message */}
+                  {!hasData && (
+                    <div style={{ textAlign: "center", padding: "20px 0", color: C.textGhost, fontSize: 12, fontWeight: 800 }}>
+                      এই ফিল্টারে কোনো ডেটা নেই।
+                    </div>
+                  )}
+                </div>
               </div>
+
+              {/* ── PIE CHART ──────────────────────────────────────── */}
+              <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 20, overflow: "hidden" }}>
+                {/* Header + inline year picker */}
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: 10,
+                  padding: "14px 16px",
+                  borderBottom: `1px solid ${C.border}`,
+                  background: C.card2,
+                }}>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 1000, color: C.text }}>
+                      কোন বোর্ড কতটি প্রশ্ন করেছে?
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: C.textFade, marginTop: 3 }}>
+                      {year === "all" ? "সব বছর মিলিয়ে" : `${year} সালের তথ্য`}
+                    </div>
+                  </div>
+
+                  {/* inline year picker */}
+                  <div style={{ position: "relative" }}>
+                    <select
+                      value={year}
+                      onChange={(e) => setYear(e.target.value)}
+                      style={{
+                        background: C.card,
+                        border: `1px solid ${C.border2}`,
+                        borderRadius: 10,
+                        padding: "7px 32px 7px 12px",
+                        color: C.text,
+                        fontSize: 12,
+                        fontWeight: 900,
+                        appearance: "none",
+                        cursor: "pointer",
+                        outline: "none",
+                      }}
+                    >
+                      <option value="all">সব বছর</option>
+                      {boardAnalytics.years.map((y) => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                    <svg style={{ position: "absolute", right: 9, top: "50%", transform: "translateY(-50%)", width: 12, height: 12, color: C.textGhost, pointerEvents: "none" }}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div style={{ padding: "14px 12px 0" }}>
+                  {/* Pie */}
+                  <div style={{ width: "100%", height: 200 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Tooltip content={<ChartTooltip />} />
+                        <Pie
+                          data={pieData}
+                          dataKey="value"
+                          nameKey="name"
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={82}
+                          innerRadius={36}
+                          stroke={C.card}
+                          strokeWidth={3}
+                        >
+                          {pieData.map((_, i) => (
+                            <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+                          ))}
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  {/* Legend rows — each board with its share */}
+                  {hasData && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 0, borderTop: `1px solid ${C.border}`, margin: "0 -12px" }}>
+                      {[...pieData]
+                        .map((d, i) => ({ ...d, color: CHART_COLORS[i % CHART_COLORS.length] }))
+                        .sort((a, b) => b.value - a.value)
+                        .map((d, idx) => {
+                          const total = pieData.reduce((s, x) => s + (Number(x.value) || 0), 0);
+                          const pct = total > 0 ? Math.round((d.value / total) * 100) : 0;
+                          return (
+                            <div
+                              key={d.name}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 10,
+                                padding: "11px 16px",
+                                borderBottom: idx < pieData.length - 1 ? `1px solid ${C.border}` : "none",
+                              }}
+                            >
+                              {/* color swatch */}
+                              <div style={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: "50%",
+                                background: d.color,
+                                flexShrink: 0,
+                                marginTop: 1,
+                              }} />
+
+                              {/* board name */}
+                              <div style={{ flex: 1, fontSize: 12, fontWeight: 1000, color: C.textMid }}>
+                                {d.name}
+                              </div>
+
+                              {/* mini bar */}
+                              <div style={{ width: 72, height: 6, borderRadius: 3, background: C.border2, overflow: "hidden" }}>
+                                <div style={{
+                                  width: `${pct}%`,
+                                  height: "100%",
+                                  background: d.color,
+                                  borderRadius: 3,
+                                  transition: "width 0.4s ease",
+                                }} />
+                              </div>
+
+                              {/* percent */}
+                              <div style={{ fontSize: 12, fontWeight: 1000, color: C.textDim, minWidth: 34, textAlign: "right" }}>
+                                {pct}%
+                              </div>
+
+                              {/* absolute count */}
+                              <div style={{
+                                background: C.card2,
+                                border: `1px solid ${C.border2}`,
+                                borderRadius: 6,
+                                padding: "2px 7px",
+                                fontSize: 11,
+                                fontWeight: 1000,
+                                color: C.textFade,
+                                minWidth: 28,
+                                textAlign: "center",
+                              }}>
+                                {d.value}
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  )}
+
+                  {!hasData && (
+                    <div style={{ textAlign: "center", padding: "20px 0", color: C.textGhost, fontSize: 12, fontWeight: 800 }}>
+                      এই ফিল্টারে কোনো ডেটা নেই।
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* RELEVANT */}
         {tab === "relevant" && (
